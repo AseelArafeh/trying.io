@@ -27,7 +27,6 @@ public class UploadSourceCode extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< HEAD
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -35,8 +34,6 @@ public class UploadSourceCode extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Upload Source Code");
@@ -51,8 +48,6 @@ public class UploadSourceCode extends javax.swing.JFrame {
 
         jButton1.setText("Save");
 
-=======
->>>>>>> b08151fcbf973a995eca4847965362ebf4046ffb
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
