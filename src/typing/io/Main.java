@@ -4,6 +4,15 @@ package typing.io;
  *
  * @author Aseel
  */
+
+
+// Add documentation please.
+// All buttons names should all be changed to a name similar to their action
+// After a new frame appears the main frame should disappear .. Add the following statement.. this.setVisible(false);
+// Add a comment before each button declaring its functionality
+// All buttons need to be moved a little bit.. They're not in the middle of the screen. 
+// The frame always appears in the top right corner of the user's screen.. It must be moved into the middle.
+
 public class Main extends javax.swing.JFrame {
 
     public Main() {
