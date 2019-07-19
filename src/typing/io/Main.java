@@ -1,3 +1,14 @@
+/*
+    Main frame was the first frame appered to user, when run our app "trying.io".
+    So, at first we put a welcoming statement in a label.
+    Then, a three buttons located at middle of the frame.
+    First one, move us to another frame, its 'Upload Source Code' frame.. 
+               which give user the ability to upload his/her own code, to practise it.
+    While the  second one move us to a 'selectLanguage' frame, to select in which language does user prefer practicing?
+    and finally, we have an exit button, to exit from app.
+    
+*/
+
 package typing.io;
 
 /**
@@ -6,12 +17,23 @@ package typing.io;
  */
 
 
-// Add documentation please.
-// All buttons names should all be changed to a name similar to their action
+// Add documentation please... DONE
+// All buttons names should all be changed to a name similar to their action... DONE
 // After a new frame appears the main frame should disappear .. Add the following statement.. this.setVisible(false);
-// Add a comment before each button declaring its functionality
-// All buttons need to be moved a little bit.. They're not in the middle of the screen. 
-// The frame always appears in the top right corner of the user's screen.. It must be moved into the middle.
+ 
+//// I think it's better to stay it or to put a 'main' button in each frame, which move to the 'Main' frame,
+//// this is importent if a user wanna to return to the main interface at anytime.
+ 
+ 
+// Add a comment before each button declaring its functionality.
+//// they are in 'do not modify' block, so i put all comments before it....DONE
+ 
+// All buttons need to be moved a little bit.. They're not in the middle of the screen
+//// You can update it... i could not found a property releated to that.
+ 
+// The frame always appears in the top right corner of the user's screen.. It must be moved into the middle....DONE
+//// Okay, I update it for every frames. 
+ 
 
 public class Main extends javax.swing.JFrame {
 
@@ -84,7 +106,8 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(416, 339));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -114,10 +137,26 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
+    
+    
+//// Here, i explain functionality of each button declared in the below, do not modify block.
+ 
+//// button declaring its functionality.
+//// exitButton: exit from app.
+//// practiceButton: move to practice frame.
+//// uploadSourceCodeButton: move to UploadSourceCode frame.
+//// welcomingLabel: contain 'welcome to typing.io' statement.
+ 
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+//// Please acknowledge me when reading the this updated code, and remove every unnecessary comments.
+//// Thanks for reviewing my code :) 
+
 }
