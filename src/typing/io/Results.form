@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -27,16 +27,16 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" pref="83" max="-2" attributes="0"/>
+                      <Component id="TypingSpeed" min="-2" pref="83" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="NoOfWords" min="-2" pref="48" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="per" min="-2" pref="28" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" pref="59" max="-2" attributes="0"/>
+                      <Component id="timeSelected" min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel5" min="-2" pref="102" max="-2" attributes="0"/>
+                      <Component id="NumberOfErrors" min="-2" pref="102" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="NoOfErrors" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
@@ -54,16 +54,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="TypingSpeed" alignment="0" pref="40" max="32767" attributes="0"/>
                   <Component id="NoOfWords" alignment="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="per" alignment="0" max="32767" attributes="0"/>
+                  <Component id="timeSelected" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="NumberOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="NoOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -74,7 +72,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="TypingSpeed">
       <Properties>
         <Property name="text" type="java.lang.String" value="Typing Speed:"/>
       </Properties>
@@ -85,19 +83,19 @@
         <Property name="text" type="java.lang.String" value="NoW"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="per">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="per"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="timeSelected">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="minute"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="NumberOfErrors">
       <Properties>
         <Property name="text" type="java.lang.String" value="Number of Errors:"/>
       </Properties>
