@@ -1,3 +1,9 @@
+//// code was reviewed by Aseel Arafeh
+//// 4 forward slashes was used to mark Aseel's commnents.
+
+
+//// I think it would be better if you remove Netbeans default comment, it is annoyed for somehow.
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -142,6 +148,9 @@ public class Results extends javax.swing.JFrame {
         });
     }
 
+    //// Some labels name was ambiguous. 
+    //// So, try to choose a clear ones, this will help us more when we use it. 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NoOfErrors;
     private javax.swing.JLabel NoOfWords;
