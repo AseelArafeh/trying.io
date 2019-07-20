@@ -19,10 +19,14 @@ import java.util.logging.Logger;
 public class Practice extends javax.swing.JFrame {
 
     //My variables:
-    int counter = 10;
+    int time = 10;
     Boolean isIt = false;
+    int numberOferrors = 0;
+    int nummberOfpressedKeys = 0;
     
     int currentPosition = 0; //This will hold where the next character is
+    
+    
     
     public Practice() {
         initComponents();
@@ -59,14 +63,14 @@ public class Practice extends javax.swing.JFrame {
  
         
         Timer timer = new Timer(); //new timer
-        counter = 60; //setting the counter to 60 sec
+        time = 60; //setting the counter to 60 sec
         TimerTask task = new TimerTask() {         
             public void run() {                
-                timeRemainingTextField.setText(Integer.toString(counter)); //the timer lable to counter.
-                counter --;
-                if (counter == -1){
+                timeRemainingTextField.setText(Integer.toString(time)); //the timer lable to counter.
+                time --;
+                if (time == -1){
                     timer.cancel();
-                    Results resultsObject = new Results();
+                    Results resultsObject = new Results(nummberOfpressedKeys, numberOferrors,time);
                     resultsObject.setVisible(true);
                     ////this.setVisible(false);
                     isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -184,7 +188,7 @@ public class Practice extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
-        Results resultsObject = new Results();
+        Results resultsObject = new Results(nummberOfpressedKeys, numberOferrors,time);
         resultsObject.setVisible(true);
         this.setVisible(false);
         isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -198,12 +202,16 @@ public class Practice extends javax.swing.JFrame {
                         @Override
 
                         public void keyPressed(KeyEvent event) {
-
+                                
+                                nummberOfpressedKeys++;
+                                
                                 printEventInfo("Key Pressed", event);
                                 if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace"){
                                         currentPosition--;
+                                        numberOferrors++;
                                 } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift"){
                                         //Don't do Anything
+                                        numberOferrors++;
                                 } else {
                                         if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)){
                                                         typedTextArea.setForeground(Color.green);
@@ -211,6 +219,7 @@ public class Practice extends javax.swing.JFrame {
                                                 } else {
                                                         typedTextArea.setForeground(Color.BLACK);
                                                         currentPosition++;
+                                                        numberOferrors++;
                                                 }
                                 }
                         }
