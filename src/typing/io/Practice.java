@@ -2,8 +2,15 @@ package typing.io;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Aseel
@@ -19,11 +26,35 @@ public class Practice extends javax.swing.JFrame {
         initComponents();
     }
 
-    public Practice(String selectedLanguage) {
+    public Practice(String selectedLanguage) throws IOException {
         initComponents();
         
         languageTextField.setText(selectedLanguage);
-        origionalCodeTextArea.setText(selectedLanguage);//i will update it to file content later  
+        
+        try {
+                String line = null;
+         
+                FileReader content = new FileReader("practiceLanguages" + "//" + selectedLanguage + ".txt");
+                BufferedReader bufferedReader = new BufferedReader(content); 
+                
+                //BufferedReader can only read data line by line.. That's why I needed allOfIt string to save all lines together
+                String allOfIt = "";
+                
+                //Reading line by line and adding it to allOfIt;
+                while((line = bufferedReader.readLine()) != null) {
+                        allOfIt += line;
+                        allOfIt += "\n";
+                }   
+
+                bufferedReader.close(); 
+                origionalCodeTextArea.setText(allOfIt);  
+                    
+        } catch (FileNotFoundException ex) {
+                Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+ 
         
         Timer timer = new Timer(); //new timer
         counter = 60; //setting the counter to 60 sec
@@ -170,7 +201,6 @@ public class Practice extends javax.swing.JFrame {
 
                         }
 
-
                         @Override
 
                         public void keyReleased(KeyEvent event) {
@@ -188,13 +218,9 @@ public class Practice extends javax.swing.JFrame {
 
                                 System.out.println(str);
 
-                                int code = e.getKeyCode();
-
-                                System.out.println("   Code: " + KeyEvent.getKeyText(code));
-
                                 System.out.println("   Char: " + e.getKeyChar());
 
-                                int mods = e.getModifiersEx();
+                                int mods = e.getModifiersEx(); //mode has the value if shift is pressed
 
                                 System.out.println("    Mods: "
 
