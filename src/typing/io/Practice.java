@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class Practice extends javax.swing.JFrame {
 
     //My variables:
-    int time = 10;
+    int time = 60;
     Boolean isIt = false;
     int numberOferrors = 0;
     int nummberOfpressedKeys = 0;
