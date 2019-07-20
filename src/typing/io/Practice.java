@@ -202,6 +202,8 @@ public class Practice extends javax.swing.JFrame {
                                 printEventInfo("Key Pressed", event);
                                 if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace"){
                                         currentPosition--;
+                                } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift"){
+                                        //Don't do Anything
                                 } else {
                                         if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)){
                                                         typedTextArea.setForeground(Color.green);
