@@ -1,7 +1,10 @@
 package typing.io;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.ComboBox;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -107,9 +110,15 @@ public class selectLanguage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Practice practiceObject = new Practice((String) langList.getSelectedItem());
-        practiceObject.setVisible(true);
-        this.setVisible(false);
+        Practice practiceObject;
+            try {
+                    practiceObject = new Practice((String) langList.getSelectedItem());
+                    practiceObject.setVisible(true);
+                    this.setVisible(false); 
+            } catch (IOException ex) {
+                    Logger.getLogger(selectLanguage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {

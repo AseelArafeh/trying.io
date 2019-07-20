@@ -1,5 +1,6 @@
 package typing.io;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
@@ -21,6 +22,7 @@ public class Practice extends javax.swing.JFrame {
     int counter = 10;
     Boolean isIt = false;
     
+    int currentPosition = 0; //This will hold where the next character is
     
     public Practice() {
         initComponents();
@@ -198,7 +200,17 @@ public class Practice extends javax.swing.JFrame {
                         public void keyPressed(KeyEvent event) {
 
                                 printEventInfo("Key Pressed", event);
-
+                                if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace"){
+                                        currentPosition--;
+                                } else {
+                                        if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)){
+                                                        typedTextArea.setForeground(Color.green);
+                                                        currentPosition++;
+                                                } else {
+                                                        typedTextArea.setForeground(Color.BLACK);
+                                                        currentPosition++;
+                                                }
+                                }
                         }
 
                         @Override
@@ -217,6 +229,7 @@ public class Practice extends javax.swing.JFrame {
                         private void printEventInfo(String str, KeyEvent e) {
 
                                 System.out.println(str);
+                                System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
 
                                 System.out.println("   Char: " + e.getKeyChar());
 
@@ -225,9 +238,6 @@ public class Practice extends javax.swing.JFrame {
                                 System.out.println("    Mods: "
 
                                     + KeyEvent.getModifiersExText(mods));
-
-
-                                System.out.println("    Action? " + e.isActionKey());
 
                         };
                 };
