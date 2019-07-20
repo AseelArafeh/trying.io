@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.NavigableMap;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -22,11 +25,23 @@ public class Practice extends javax.swing.JFrame {
     int time = 60;
     Boolean isIt = false;
     int numberOferrors = 0;
-    int nummberOfpressedKeys = 0;
+    int numberOfpressedKeys = 0;
     
     int currentPosition = 0; //This will hold where the next character is
     
+    Map< String, Integer > wrongTypedKeys =  new HashMap< String,Integer>();
     
+    
+    /*
+    this code to be used in results interface
+    
+    for (Map.Entry< String,Integer> me:st) 
+       { 
+           Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
+           System.out.print(me.getKey()+":"); 
+           System.out.println(me.getValue()); 
+       } 
+    */
     
     public Practice() {
         initComponents();
@@ -70,7 +85,7 @@ public class Practice extends javax.swing.JFrame {
                 time --;
                 if (time == -1){
                     timer.cancel();
-                    Results resultsObject = new Results(nummberOfpressedKeys, numberOferrors,time);
+                    Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,time, wrongTypedKeys);
                     resultsObject.setVisible(true);
                     ////this.setVisible(false);
                     isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -188,7 +203,7 @@ public class Practice extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
-        Results resultsObject = new Results(nummberOfpressedKeys, numberOferrors,time);
+        Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,time, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
         isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -203,8 +218,7 @@ public class Practice extends javax.swing.JFrame {
 
                         public void keyPressed(KeyEvent event) {
                                 
-                                nummberOfpressedKeys++;
-                                
+                               
                                 printEventInfo("Key Pressed", event);
                                 if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace"){
                                         currentPosition--;
@@ -212,16 +226,25 @@ public class Practice extends javax.swing.JFrame {
                                 } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift"){
                                         //Don't do Anything
                                         numberOferrors++;
+                                        numberOfpressedKeys--;
                                 } else {
                                         if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)){
                                                         typedTextArea.setForeground(Color.green);
                                                         currentPosition++;
                                                 } else {
-                                                        typedTextArea.setForeground(Color.BLACK);
+                                                        typedTextArea.setForeground(Color.RED);
                                                         currentPosition++;
-                                                        numberOferrors++;
+//                                                      numberOferrors++;
+
+                                                        String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
+                                                        if ( wrongTypedKeys.containsKey(keyPressedString) ) {
+                                                                wrongTypedKeys.put(keyPressedString, new Integer(wrongTypedKeys.get(keyPressedString) + 1));
+                                                        } else {
+                                                                wrongTypedKeys.put(keyPressedString, new Integer(1));
+                                                        }
                                                 }
                                 }
+                                numberOfpressedKeys++;
                         }
 
                         @Override

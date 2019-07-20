@@ -10,6 +10,9 @@
 
 package typing.io;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  *
  * @author ghaid
@@ -22,7 +25,7 @@ public class Results extends javax.swing.JFrame {
     }
     
     //// Here i override the constructor, to accept data from 'Practice' Frame.
-    public Results(int nummberOfpressedKeys, int numberOferrors, int timeInSeconds) {
+    public Results(int nummberOfpressedKeys, int numberOferrors, int timeInSeconds, Map< String, Integer > wrongTypedKeys) {
         
         initComponents();
         
@@ -38,6 +41,23 @@ public class Results extends javax.swing.JFrame {
         timeSelected.setText(String.valueOf(timeInSeconds/60.0));
         //// set the number of errors to NoOfErrors text field.
         NoOfErrors.setText(String.valueOf(numberOferrors));
+        
+        
+        // Implementing the list of charcters.
+        Set< Map.Entry< String,Integer> > wrongTypedKeysSet = wrongTypedKeys.entrySet();
+        
+        String ErrorList = "";
+        
+        for (Map.Entry< String, Integer> me:wrongTypedKeysSet) { 
+           Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
+           System.out.print(me.getKey()+":"); 
+           System.out.println(me.getValue()); 
+           ErrorList += ("    " + me.getKey() + ":    " + me.getValue() + "    Times" + "\n");
+       } 
+        
+        errorListTextArea.setText(ErrorList);
+        
+        
     } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
