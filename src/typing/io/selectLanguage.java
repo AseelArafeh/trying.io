@@ -26,9 +26,8 @@ public class selectLanguage extends javax.swing.JFrame {
         for (File listOfFile : listOfFiles) {
                 
                 // The first line cuts the extension name ".txt" from the files names
-                ////String langName = listOfFile.getName().substring(0, listOfFile.getName().lastIndexOf("."));
-                ////jumboBoxContent.add(langName);
-                //// line 29+30, needs an update 
+                String langName = listOfFile.getName().substring(0, listOfFile.getName().lastIndexOf("."));
+                jumboBoxContent.add(langName);
                 
         }
         
