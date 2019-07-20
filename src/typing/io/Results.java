@@ -1,3 +1,12 @@
+/*
+    In 'Results frame', we show a user some statistics which reflects his/her performance.
+    Statistics includes;
+        - typing speed 'number of words per minutes'.
+        - number of errors through the practice.
+        - list of all errors (all error-ed characters with a counter for each).
+*/
+
+//// Aseel's comments 
 
 package typing.io;
 
@@ -5,12 +14,31 @@ package typing.io;
  *
  * @author ghaid
  */
+
 public class Results extends javax.swing.JFrame {
 
     public Results() {
         initComponents();
     }
     
+    //// Here i override the constructor, to accept data from 'Practice' Frame.
+    public Results(int nummberOfpressedKeys, int numberOferrors, int timeInSeconds) {
+        
+        initComponents();
+        
+        //// Typing speed is measured in WpM (Word per Minute) 
+        //// WpM is usually measured using a standard word length, which is 5 characters
+        //// any keystroke is considered as a character... 
+        //// so speed variable will calculated by the follwing equation.
+        ////  speed =           ( number of standard words ) / (time spent in minutes)
+        float speed = (float) ( ( nummberOfpressedKeys/5.0 ) / (  timeInSeconds/60.0 ) );
+        //// set the speed to NoOfWords text field, after converting float data type to String.
+        NoOfWords.setText(String.valueOf(speed));
+        //// set the time to timeSelected text field, after convert seconds to minutes 
+        timeSelected.setText(String.valueOf(timeInSeconds/60.0));
+        //// set the number of errors to NoOfErrors text field.
+        NoOfErrors.setText(String.valueOf(numberOferrors));
+    } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -22,7 +50,7 @@ public class Results extends javax.swing.JFrame {
         NumberOfErrors = new javax.swing.JLabel();
         NoOfErrors = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        errorListTextArea = new javax.swing.JTextArea();
 
         TypingSpeed.setText("Typing Speed:");
 
@@ -40,12 +68,12 @@ public class Results extends javax.swing.JFrame {
         NoOfErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NoOfErrors.setText("0");
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setBackground(new java.awt.Color(240, 240, 240));
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setBorder(javax.swing.BorderFactory.createTitledBorder("Errors List"));
-        jScrollPane2.setViewportView(jTextArea2);
+        errorListTextArea.setEditable(false);
+        errorListTextArea.setBackground(new java.awt.Color(240, 240, 240));
+        errorListTextArea.setColumns(20);
+        errorListTextArea.setRows(5);
+        errorListTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Errors List"));
+        jScrollPane2.setViewportView(errorListTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,8 +153,8 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JLabel NoOfWords;
     private javax.swing.JLabel NumberOfErrors;
     private javax.swing.JLabel TypingSpeed;
+    private javax.swing.JTextArea errorListTextArea;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel per;
     private javax.swing.JLabel timeSelected;
     // End of variables declaration//GEN-END:variables
