@@ -24,8 +24,6 @@ public class Results extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         TypingSpeed.setText("Typing Speed:");
 
         NoOfWords.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

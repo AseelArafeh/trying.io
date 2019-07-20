@@ -26,8 +26,9 @@ public class selectLanguage extends javax.swing.JFrame {
         for (File listOfFile : listOfFiles) {
                 
                 // The first line cuts the extension name ".txt" from the files names
-                String langName = listOfFile.getName().substring(0, listOfFile.getName().lastIndexOf("."));
-                jumboBoxContent.add(langName);
+                ////String langName = listOfFile.getName().substring(0, listOfFile.getName().lastIndexOf("."));
+                ////jumboBoxContent.add(langName);
+                //// line 29+30, needs an update 
                 
         }
         
@@ -54,8 +55,6 @@ public class selectLanguage extends javax.swing.JFrame {
         langList = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Select your preferred language to practise ");
@@ -109,9 +108,9 @@ public class selectLanguage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Practice practiceObject = new Practice();
+        Practice practiceObject = new Practice((String) langList.getSelectedItem());
         practiceObject.setVisible(true);
-        
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
