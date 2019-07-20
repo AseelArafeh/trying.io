@@ -35,10 +35,13 @@ public class Results extends javax.swing.JFrame {
         //// so speed variable will calculated by the follwing equation.
         ////  speed =           ( number of standard words ) / (time spent in minutes)
         float speed = (float) ( ( nummberOfpressedKeys/5.0 ) / (  timeInSeconds/60.0 ) );
+        //// 'speed and time' format needed is #.## 
+        String speedWithTwoDigits = String.format("%.02f", speed);
+        String timeInSecondsWithTwoDigits = String.format("%.02f", timeInSeconds/60.0);
         //// set the speed to NoOfWords text field, after converting float data type to String.
-        NoOfWords.setText(String.valueOf(speed));
+        NoOfWords.setText(speedWithTwoDigits);
         //// set the time to timeSelected text field, after convert seconds to minutes 
-        timeSelected.setText(String.valueOf(timeInSeconds/60.0));
+        timeSelected.setText(timeInSecondsWithTwoDigits);
         //// set the number of errors to NoOfErrors text field.
         NoOfErrors.setText(String.valueOf(numberOferrors));
         
