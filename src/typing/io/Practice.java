@@ -21,16 +21,18 @@ import java.util.logging.Logger;
  */
 public class Practice extends javax.swing.JFrame {
 
+    // Timer Related Variables
+    private int timeRemainingInSeconds = 0;     //// time remaining for down-counting timer  
+    private int selectedDurationInMinutes = 0;  //// selected duration for practice in minutes 
+    private Boolean isIt = false;
     
-    int timeRemainingInSeconds = 0;//// time remaining for down-counting timer  
-    int selectedDurationInMinutes = 0;//// selected duration for practice in minutes 
-    Boolean isIt = false;
-    int numberOferrors = 0; //// count number of errors 
-    int numberOfpressedKeys = 0;//// count number of any keystroke
+    // Error manegemnt Variables
+    private int numberOferrors = 0;             //// count number of errors 
+    private int numberOfpressedKeys = 0;        //// count number of any keystroke
+    private int currentPosition = 0; //This will hold where the next character is
     
-    
-    int currentPosition = 0; //This will hold where the next character is
-    Map< String, Integer > wrongTypedKeys =  new HashMap< String,Integer>();
+    // Map of Errors
+    private Map< String, Integer > wrongTypedKeys =  new HashMap< String,Integer>();
    
     
     public Practice() {
@@ -42,33 +44,41 @@ public class Practice extends javax.swing.JFrame {
         
         timeRemainingInSeconds = selectedDuration*60;
         selectedDurationInMinutes = selectedDuration;
+        
         languageTextField.setText(selectedLanguage);
         timeRemainingTextField.setText(String.valueOf(selectedDuration));
         
         try {
-                String line = null;
-         
-                FileReader content = new FileReader("practiceLanguages" + "//" + selectedLanguage + ".txt");
-                BufferedReader bufferedReader = new BufferedReader(content); 
-                
-                //BufferedReader can only read data line by line.. That's why I needed allOfIt string to save all lines together
-                String allOfIt = "";
-                
-                //Reading line by line and adding it to allOfIt;
-                while((line = bufferedReader.readLine()) != null) {
-                        allOfIt += line;
-                        allOfIt += "\n";
-                }   
+            String line = null;
 
-                bufferedReader.close(); 
-                origionalCodeTextArea.setText(allOfIt);  
+            FileReader content = new FileReader("practiceLanguages" + "//" + selectedLanguage + ".txt");
+            BufferedReader bufferedReader = new BufferedReader(content); 
+
+            //BufferedReader can only read data line by line.. That's why I needed allOfIt string to save all lines together
+            String allOfIt = "";
+
+            //Reading line by line and adding it to allOfIt;
+            while((line = bufferedReader.readLine()) != null) {
+                    allOfIt += line;
+                    allOfIt += "\n";
+            }   
+
+            bufferedReader.close(); 
+            origionalCodeTextArea.setText(allOfIt);  
                     
         } catch (FileNotFoundException ex) {
-                Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
         }
         
 
  
+        // {GE: please change the variable name of "itIt" boolean. Pick a name more related to it's functionality
+        // {GE: Please add spaces before and after operatots. Modify spaces in the bookmarked lines .
+        // {GE: Your comments should be better organised. Try to add tabs between comments and actual code
+        // {GE: Please don't use "////" it makes the code look disorganised
+        // {GE: Add a line before and after the block of code inside control statement such as (if, else)
+        // {GE: Add white space betweeen end of expression and start of the block.. Follow this format: if ( ) {
+        
         
         Timer timer = new Timer(); ////initiate a new timer
         timeRemainingInSeconds = selectedDuration*60; ////setting the counter to selectedDuration in seconds 
@@ -204,78 +214,88 @@ public class Practice extends javax.swing.JFrame {
         resultsObject.setVisible(true);
         this.setVisible(false);
         isIt = true; // changing the boolian isIt to true, which will stop the timer.
+        
     }//GEN-LAST:event_endButtonActionPerformed
 
         private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
-                //Ghaid's code starts here 
-        
-        KeyListener listener = new KeyListener() {
+            //Ghaid's code starts here 
 
-                        @Override
+            KeyListener listener = new KeyListener() {
 
-                        public void keyPressed(KeyEvent event) {
-                                
-                               
-                                printEventInfo("Key Pressed", event);
-                                if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace"){
-                                        currentPosition--;
-                                        numberOferrors++;
-                                } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift"){
-                                        //Don't do Anything
-                                        numberOferrors++;
-                                        numberOfpressedKeys--;
-                                } else {
-                                        if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)){
-                                                        typedTextArea.setForeground(Color.green);
-                                                        currentPosition++;
-                                                } else {
-                                                        typedTextArea.setForeground(Color.RED);
-                                                        currentPosition++;
-//                                                      numberOferrors++;
-//// Please review line 237 ghaid, why you comment it?
-//// in case of two characters was not match, and the clicked one is not "Backspace" neither "Shift", you does not count this error.
-                                                        String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
-                                                        if ( wrongTypedKeys.containsKey(keyPressedString) ) {
-                                                                wrongTypedKeys.put(keyPressedString, new Integer(wrongTypedKeys.get(keyPressedString) + 1));
-                                                        } else {
-                                                                wrongTypedKeys.put(keyPressedString, new Integer(1));
-                                                        }
-                                                }
-                                }
-                                numberOfpressedKeys++;
-                        }
+                @Override
 
-                        @Override
+                public void keyPressed(KeyEvent event) {
 
-                        public void keyReleased(KeyEvent event) {
-//                                printEventInfo("Key Released", event);
-                        }
-
-                        @Override
-
-                        public void keyTyped(KeyEvent event) {
-                                //printEventInfo("Key Typed", event);
-                        }
-
+                    printEventInfo("Key Pressed", event);
+                    
+                    if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
                         
-                        private void printEventInfo(String str, KeyEvent e) {
+                            currentPosition--;
+                            numberOferrors++;
+                            
+                    } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift") {
+                        
+                        //numberOferrors++;
+                        numberOfpressedKeys--;
+                        
+                    } else {
+                        if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
+                            
+                            typedTextArea.setForeground(Color.green);
+                            currentPosition++;
+                            
+                        } else {
+                            
+                            typedTextArea.setForeground(Color.RED);
+                            currentPosition++;
+                            numberOferrors++;
+  
+                            String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
 
-                                System.out.println(str);
-                                System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
+                            if ( wrongTypedKeys.containsKey(keyPressedString) ) {
+                                wrongTypedKeys.put(Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1)), new Integer(wrongTypedKeys.get(keyPressedString) + 1));
+                                //wrongTypedKeys.put(keyPressedString, new Integer(wrongTypedKeys.get(keyPressedString) + 1));
+                            } else {
+                                wrongTypedKeys.put(Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1)), new Integer(1));
+                                //wrongTypedKeys.put(keyPressedString, new Integer(1));
+                            }
+                            
+                        }
+                    }
+                    numberOfpressedKeys++;
+                }
 
-                                System.out.println("   Char: " + e.getKeyChar());
+                @Override
 
-                                int mods = e.getModifiersEx(); //mode has the value if shift is pressed
+                public void keyReleased(KeyEvent event) {
+                    //printEventInfo("Key Released", event);
+                }
 
-                                System.out.println("    Mods: "
+                @Override
 
-                                    + KeyEvent.getModifiersExText(mods));
+                public void keyTyped(KeyEvent event) {
+                    //printEventInfo("Key Typed", event);
+                }
 
-                        };
+
+                private void printEventInfo(String str, KeyEvent e) {
+
+                    System.out.println(str);
+                    System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
+
+                    System.out.println("   Char: " + e.getKeyChar());
+
+                    int mods = e.getModifiersEx(); //mode has the value if shift is pressed
+
+                    System.out.println("    Mods: "
+
+                        + KeyEvent.getModifiersExText(mods));
+
                 };
-                       
-                typedTextArea.addKeyListener(listener);
-                
+            };
+
+            typedTextArea.addKeyListener(listener);
+
         }//GEN-LAST:event_typedTextAreaFocusGained
 
     public static void main(String args[]) {
