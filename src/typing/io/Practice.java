@@ -220,28 +220,27 @@ public class Practice extends javax.swing.JFrame {
         private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
             //Ghaid's code starts here 
 
+            // currentPosition holds the index of the letter to be typed 
+            
             KeyListener listener = new KeyListener() {
 
                 @Override
-
                 public void keyPressed(KeyEvent event) {
 
-                    printEventInfo("Key Pressed", event);
+                    printEventInfo("Key Pressed", event); 
                     
                     if(KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
-                        
+                        if (currentPosition - 1 >= 0)
                             currentPosition--;
-                            numberOferrors++;
                             
-                    } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift") {
-                        
-                        //numberOferrors++;
+                    } else if(KeyEvent.getKeyText(event.getKeyCode()) == "Shift")      
                         numberOfpressedKeys--;
-                        
-                    } else {
+                    
+                    else {
                         if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
                             
-                            typedTextArea.setForeground(Color.green);
+                            // If the key typed is correct the text color becomes green
+                            typedTextArea.setForeground(new Color(0, 128, 0));
                             currentPosition++;
                             
                         } else {
@@ -249,17 +248,15 @@ public class Practice extends javax.swing.JFrame {
                             typedTextArea.setForeground(Color.RED);
                             currentPosition++;
                             numberOferrors++;
-  
-                            String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
-
-                            if ( wrongTypedKeys.containsKey(keyPressedString) ) {
-                                wrongTypedKeys.put(Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1)), new Integer(wrongTypedKeys.get(keyPressedString) + 1));
-                                //wrongTypedKeys.put(keyPressedString, new Integer(wrongTypedKeys.get(keyPressedString) + 1));
-                            } else {
-                                wrongTypedKeys.put(Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1)), new Integer(1));
-                                //wrongTypedKeys.put(keyPressedString, new Integer(1));
-                            }
+ 
+                            // wrongKey holds the value of key typed incorrectly
+                            String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
                             
+                            if ( wrongTypedKeys.containsKey(wrongKey) ) 
+                                wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
+                            else 
+                                wrongTypedKeys.put(wrongKey, new Integer(1));
+                                
                         }
                     }
                     numberOfpressedKeys++;
