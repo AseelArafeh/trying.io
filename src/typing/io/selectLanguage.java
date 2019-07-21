@@ -53,15 +53,17 @@ public class selectLanguage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        selectPracticeInformationLabel = new javax.swing.JLabel();
         langList = new javax.swing.JComboBox<>();
         languageLabel = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         timeLabel = new javax.swing.JLabel();
         durationList = new javax.swing.JComboBox<>();
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Select your practice information");
+        setTitle("Practice Information");
+
+        selectPracticeInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        selectPracticeInformationLabel.setText("Select your practice information");
 
         langList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -92,7 +94,7 @@ public class selectLanguage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(selectPracticeInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(startButton))
                         .addGap(70, 70, 70))
                     .addGroup(layout.createSequentialGroup()
@@ -111,7 +113,7 @@ public class selectLanguage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectPracticeInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,9 +160,9 @@ public class selectLanguage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> durationList;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> langList;
     private javax.swing.JLabel languageLabel;
+    private javax.swing.JLabel selectPracticeInformationLabel;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables

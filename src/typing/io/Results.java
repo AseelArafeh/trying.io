@@ -76,6 +76,8 @@ public class Results extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         errorListTextArea = new javax.swing.JTextArea();
 
+        setTitle("Results");
+
         TypingSpeed.setText("Typing Speed:");
 
         NoOfWords.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
