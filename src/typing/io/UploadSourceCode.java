@@ -24,30 +24,32 @@ public class UploadSourceCode extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        uploadSourceCodeLabel = new javax.swing.JLabel();
+        languageLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         langContent = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
+        codeLabel = new javax.swing.JLabel();
         langName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Upload Source Code");
+        setTitle("Upload Source Code");
 
-        jLabel2.setText("Language:");
+        uploadSourceCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        uploadSourceCodeLabel.setText("Upload Source Code");
+
+        languageLabel.setText("Language:");
 
         langContent.setColumns(20);
         langContent.setRows(5);
         jScrollPane1.setViewportView(langContent);
 
-        jLabel3.setText("Code:");
+        codeLabel.setText("Code:");
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -68,13 +70,13 @@ public class UploadSourceCode extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(languageLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(langName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3)))
+                            .addComponent(codeLabel)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(uploadSourceCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(152, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -85,25 +87,25 @@ public class UploadSourceCode extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(saveButton)))
                 .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(uploadSourceCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(languageLabel)
                     .addComponent(langName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(codeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(saveButton)
                     .addComponent(cancelButton))
                 .addContainerGap())
         );
@@ -112,7 +114,7 @@ public class UploadSourceCode extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
                 
                 String languageName = langName.getText();
                 String languageContent = langContent.getText();
@@ -161,7 +163,7 @@ public class UploadSourceCode extends javax.swing.JFrame {
                         
                         
                 }
-        }//GEN-LAST:event_jButton1ActionPerformed
+        }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
@@ -203,12 +205,12 @@ public class UploadSourceCode extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel codeLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea langContent;
     private javax.swing.JTextField langName;
+    private javax.swing.JLabel languageLabel;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JLabel uploadSourceCodeLabel;
     // End of variables declaration//GEN-END:variables
 }

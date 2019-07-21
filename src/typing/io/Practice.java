@@ -108,6 +108,9 @@ public class Practice extends javax.swing.JFrame {
         endButton = new javax.swing.JButton();
         secondLabel = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Practice!");
+
         practiceTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         practiceTitle.setText("Practice!");
 

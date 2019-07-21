@@ -49,7 +49,9 @@ public class Main extends javax.swing.JFrame {
         practiceButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
         image = new javax.swing.JLabel();
-        welcomingLabel2 = new javax.swing.JLabel();
+        welcomingLabel = new javax.swing.JLabel();
+
+        setTitle("typing.io");
 
         uploadSourceCodeButton.setText("Upload Code");
         uploadSourceCodeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -75,8 +77,8 @@ public class Main extends javax.swing.JFrame {
         image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/typing/io/speed.png"))); // NOI18N
 
-        welcomingLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomingLabel2.setText("Welcome to typing.io");
+        welcomingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomingLabel.setText("Welcome to typing.io");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,14 +92,14 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(practiceButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                         .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
                     .addComponent(uploadSourceCodeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(welcomingLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(welcomingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(welcomingLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(welcomingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(uploadSourceCodeButton)
                 .addGap(18, 18, 18)
@@ -159,7 +161,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel image;
     private javax.swing.JButton practiceButton;
     private javax.swing.JButton uploadSourceCodeButton;
-    private javax.swing.JLabel welcomingLabel2;
+    private javax.swing.JLabel welcomingLabel;
     // End of variables declaration//GEN-END:variables
 
 //// Please acknowledge me when reading the this updated code, and remove every unnecessary comments.
