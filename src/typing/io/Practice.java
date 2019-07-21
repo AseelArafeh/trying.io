@@ -85,7 +85,8 @@ public class Practice extends javax.swing.JFrame {
                 time --;
                 if (time == -1){
                     timer.cancel();
-                    Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,time, wrongTypedKeys);
+                    //time=60;//// reset, to avoid negative values
+                    Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,60-time-1, wrongTypedKeys);
                     resultsObject.setVisible(true);
                     ////this.setVisible(false);
                     isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -96,7 +97,7 @@ public class Practice extends javax.swing.JFrame {
             }
             
         };
-    timer.scheduleAtFixedRate(task, 1000, 1000); // =  timer.scheduleAtFixedRate(task, delay, period);
+    timer.scheduleAtFixedRate(task, 0, 1000); // =  timer.scheduleAtFixedRate(task, delay, period);
         
     }
     @SuppressWarnings("unchecked")
@@ -203,7 +204,8 @@ public class Practice extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
-        Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,time, wrongTypedKeys);
+
+        Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,60-time-1, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
         isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -235,6 +237,7 @@ public class Practice extends javax.swing.JFrame {
                                                         typedTextArea.setForeground(Color.RED);
                                                         currentPosition++;
 //                                                      numberOferrors++;
+//// Please review line 237 ghaid, why you comment it? 
 
                                                         String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
                                                         if ( wrongTypedKeys.containsKey(keyPressedString) ) {

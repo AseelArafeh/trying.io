@@ -34,6 +34,7 @@ public class Results extends javax.swing.JFrame {
         //// any keystroke is considered as a character... 
         //// so speed variable will calculated by the follwing equation.
         ////  speed =           ( number of standard words ) / (time spent in minutes)
+                
         float speed = (float) ( ( nummberOfpressedKeys/5.0 ) / (  timeInSeconds/60.0 ) );
         //// 'speed and time' format needed is #.## 
         String speedWithTwoDigits = String.format("%.02f", speed);
@@ -181,4 +182,8 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JLabel per;
     private javax.swing.JLabel timeSelected;
     // End of variables declaration//GEN-END:variables
+
+    private void Syste(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
