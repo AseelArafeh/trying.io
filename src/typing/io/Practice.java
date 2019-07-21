@@ -229,7 +229,8 @@ public class Practice extends javax.swing.JFrame {
                                                         typedTextArea.setForeground(Color.RED);
                                                         currentPosition++;
 //                                                      numberOferrors++;
-
+//// Please review line 237 ghaid, why you comment it?
+//// in case of two characters was not match, and the clicked one is not "Backspace" neither "Shift", you does not count this error.
                                                         String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
                                                         if ( wrongTypedKeys.containsKey(keyPressedString) ) {
                                                                 wrongTypedKeys.put(keyPressedString, new Integer(wrongTypedKeys.get(keyPressedString) + 1));
