@@ -21,36 +21,29 @@ import java.util.logging.Logger;
  */
 public class Practice extends javax.swing.JFrame {
 
-    //My variables:
-    int time = 60;
+    
+    int timeRemainingInSeconds = 0;//// time remaining for down-counting timer  
+    int selectedDurationInMinutes = 0;//// selected duration for practice in minutes 
     Boolean isIt = false;
     int numberOferrors = 0; //// count number of errors 
     int numberOfpressedKeys = 0;//// count number of any keystroke
     
+    
     int currentPosition = 0; //This will hold where the next character is
-    
     Map< String, Integer > wrongTypedKeys =  new HashMap< String,Integer>();
-    
-    
-    /*
-    this code to be used in results interface
-    
-    for (Map.Entry< String,Integer> me:st) 
-       { 
-           Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
-           System.out.print(me.getKey()+":"); 
-           System.out.println(me.getValue()); 
-       } 
-    */
+   
     
     public Practice() {
         initComponents();
     }
 
-    public Practice(String selectedLanguage) throws IOException {
+    public Practice(String selectedLanguage, int selectedDuration) throws IOException {
         initComponents();
         
+        timeRemainingInSeconds = selectedDuration*60;
+        selectedDurationInMinutes = selectedDuration;
         languageTextField.setText(selectedLanguage);
+        timeRemainingTextField.setText(String.valueOf(selectedDuration));
         
         try {
                 String line = null;
@@ -77,19 +70,18 @@ public class Practice extends javax.swing.JFrame {
 
  
         
-        Timer timer = new Timer(); //new timer
-        time = 60; //setting the counter to 60 sec
+        Timer timer = new Timer(); ////initiate a new timer
+        timeRemainingInSeconds = selectedDuration*60; ////setting the counter to selectedDuration in seconds 
         TimerTask task = new TimerTask() {         
             public void run() {                
-                timeRemainingTextField.setText(Integer.toString(time)); //the timer lable to counter.
-                time --;
-                if (time == -1){
+                timeRemainingTextField.setText(Integer.toString(timeRemainingInSeconds)); //update remaining timer lable every second
+                timeRemainingInSeconds --;
+                if (timeRemainingInSeconds == -1){
                     timer.cancel();
-                    //time=60;//// reset, to avoid negative values
-                    Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,60-time-1, wrongTypedKeys);
+                    Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
                     resultsObject.setVisible(true);
                     ////this.setVisible(false);
-                    isIt = true; // changing the boolian isIt to true, which will stop the timer.
+                    isIt = true; //// changing the boolian isIt to true, which will stop the timer.
                 } else if(isIt){
                     timer.cancel();
                     isIt = false;
@@ -97,7 +89,7 @@ public class Practice extends javax.swing.JFrame {
             }
             
         };
-    timer.scheduleAtFixedRate(task, 0, 1000); // =  timer.scheduleAtFixedRate(task, delay, period);
+    timer.scheduleAtFixedRate(task, 0, 1000); //// =  timer.scheduleAtFixedRate(task, delay, period);
         
     }
     @SuppressWarnings("unchecked")
@@ -205,7 +197,7 @@ public class Practice extends javax.swing.JFrame {
 
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
 
-        Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,60-time-1, wrongTypedKeys);
+        Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
         isIt = true; // changing the boolian isIt to true, which will stop the timer.
@@ -237,7 +229,6 @@ public class Practice extends javax.swing.JFrame {
                                                         typedTextArea.setForeground(Color.RED);
                                                         currentPosition++;
 //                                                      numberOferrors++;
-//// Please review line 237 ghaid, why you comment it? 
 
                                                         String keyPressedString = KeyEvent.getKeyText(event.getKeyCode());
                                                         if ( wrongTypedKeys.containsKey(keyPressedString) ) {
