@@ -11,6 +11,9 @@
 
 package typing.io;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aseel
@@ -118,7 +121,15 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        System.exit(0);
+        
+        int exitConfirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit ?", "Confirm", JOptionPane.YES_NO_OPTION);
+
+        if(exitConfirmation == JOptionPane.YES_OPTION) {
+            dispose();
+        }else{
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }  
+            
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void practiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_practiceButtonActionPerformed
