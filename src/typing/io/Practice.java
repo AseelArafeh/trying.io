@@ -15,6 +15,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 /**
  *
  * @author Aseel
@@ -247,6 +251,7 @@ public class Practice extends javax.swing.JFrame {
                             
                         } else {
                             
+                            playSound("error.wav");
                             typedTextArea.setForeground(Color.RED);
                             currentPosition++;
                             numberOferrors++;
@@ -299,6 +304,19 @@ public class Practice extends javax.swing.JFrame {
 
         }//GEN-LAST:event_typedTextAreaFocusGained
 
+        
+        public void playSound(String soundFileName) {
+            try {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("sound\\"+soundFileName).getAbsoluteFile());
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+            }
+            catch(Exception ex) {
+                System.out.println("Error with playing sound.");
+                ex.printStackTrace();
+            }
+        }
     public static void main(String args[]) {
         
         try {
