@@ -20,7 +20,6 @@ import java.util.logging.Logger;
  * @author Aseel
  */
 public class Practice extends javax.swing.JFrame {
-
     // Timer Related Variables
     private int timeRemainingInSeconds = 0;     //// time remaining for down-counting timer  
     private int selectedDurationInMinutes = 0;  //// selected duration for practice in minutes 
@@ -30,6 +29,7 @@ public class Practice extends javax.swing.JFrame {
     private int numberOferrors = 0;             //// count number of errors 
     private int numberOfpressedKeys = 0;        //// count number of any keystroke
     private int currentPosition = 0; //This will hold where the next character is
+    
     
     // Map of Errors
     private Map< String, Integer > wrongTypedKeys =  new HashMap< String,Integer>();
@@ -64,7 +64,9 @@ public class Practice extends javax.swing.JFrame {
             }   
 
             bufferedReader.close(); 
-            origionalCodeTextArea.setText(allOfIt);  
+            origionalCodeTextArea.setText(allOfIt);
+            ////  set textArea scroll at the beginning, by moving the caret to position ZERO
+            origionalCodeTextArea.setCaretPosition(0);
                     
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
@@ -260,6 +262,8 @@ public class Practice extends javax.swing.JFrame {
                         }
                     }
                     numberOfpressedKeys++;
+                    //// change the scroll position 
+                    origionalCodeTextArea.setCaretPosition(currentPosition);
                 }
 
                 @Override
@@ -320,7 +324,7 @@ public class Practice extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton endButton;
     private javax.swing.JScrollPane jScrollPane1;
