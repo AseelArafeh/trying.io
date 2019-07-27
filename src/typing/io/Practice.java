@@ -76,6 +76,8 @@ public class Practice extends javax.swing.JFrame {
 
         origionalCodeTextArea.setEditable(false);
         origionalCodeTextArea.setColumns(20);
+        origionalCodeTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        origionalCodeTextArea.setLineWrap(true);
         origionalCodeTextArea.setRows(5);
         jScrollPane1.setViewportView(origionalCodeTextArea);
 
@@ -93,6 +95,7 @@ public class Practice extends javax.swing.JFrame {
         secondLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         secondLabel.setText("sec");
 
+        typedTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         typedTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 typedTextAreaFocusGained(evt);
@@ -147,7 +150,7 @@ public class Practice extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(endButton)
                 .addGap(23, 23, 23))
