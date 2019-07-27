@@ -22,12 +22,11 @@ import javax.sound.sampled.Clip;
 
 
 public class Practice extends javax.swing.JFrame {
-    
     //Timer Related Variables
     private int timeRemainingInSeconds = 0;     // Time remaining for down-counting timer  
     private int selectedDurationInMinutes = 0;  // Selected duration for practice in minutes 
     private Boolean stopTheTimer = false;       // When 'stopTheTimer' set to true, timer will stop.
-    
+    private Boolean firstFocus = true;
     //Error manegemnt Variables
     private int numberOferrors = 0;             // Count number of errors 
     private int numberOfpressedKeys = 0;        // Count number of any keystroke
@@ -49,9 +48,8 @@ public class Practice extends javax.swing.JFrame {
         timeRemainingInSeconds = selectedDuration * 60;
         selectedDurationInMinutes = selectedDuration;
         languageTextField.setText(selectedLanguage);
-        timeRemainingTextField.setText(String.valueOf(selectedDuration));
+        timeRemainingTextField.setText(timeRemainingInSeconds + "");
         fillOriginalCode(selectedLanguage);
-        fillTimer(selectedDuration);
         
     }
     
@@ -234,8 +232,11 @@ public class Practice extends javax.swing.JFrame {
     
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
         
-        // changing the boolian timerStatus to true, which will stop the timer.
-        stopTheTimer = true; 
+        if(timeRemainingInSeconds == selectedDurationInMinutes*60)
+            this.setVisible(false);
+        else 
+            // changing the boolian timerStatus to true, which will stop the timer.
+            stopTheTimer = true; 
      
     }//GEN-LAST:event_endButtonActionPerformed
 
@@ -244,7 +245,8 @@ public class Practice extends javax.swing.JFrame {
         currentPosition++;
         char currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
 
-        while(currentCh == ' ' || currentCh == '\n'){
+        while (currentCh == ' ' || currentCh == '\n') {
+            
             currentPosition++;
             if (currentCh == ' ') 
                 typedTextArea.setText(typedTextArea.getText() + " ");
@@ -252,12 +254,19 @@ public class Practice extends javax.swing.JFrame {
                 typedTextArea.setText(typedTextArea.getText() + "\n");
 
             currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
+            
         }
     
     }
     
     private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
-        // TODO add your handling code here:
+        
+        if (firstFocus) {
+            
+            fillTimer(selectedDurationInMinutes);
+            firstFocus=false;
+            
+        }
         
         // currentPosition holds the index of the letter to be typed 
         KeyListener listener = new KeyListener() {
