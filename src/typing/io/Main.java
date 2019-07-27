@@ -106,7 +106,7 @@ public class Main extends javax.swing.JFrame {
         int exitConfirmation = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit ?", "Confirm", JOptionPane.YES_NO_OPTION);
 
         if(exitConfirmation == JOptionPane.YES_OPTION) {
-            dispose();
+            System.exit(0);
         }else{
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }  
