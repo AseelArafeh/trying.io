@@ -190,7 +190,7 @@ public class Practice extends javax.swing.JFrame {
                     
             }   
 
-            bufferedReader.close(); 
+            bufferedReader.close();
             origionalCodeTextArea.setText(allOfIt);
             // Set textArea scroll at the beginning, by moving the caret to position ZERO
             origionalCodeTextArea.setCaretPosition(0);
@@ -206,15 +206,15 @@ public class Practice extends javax.swing.JFrame {
     void fillTimer(int selectedDuration){
         
         // Initiate a new timer
-        Timer timer = new Timer();          
+        Timer timer = new Timer();   
         // Setting the counter to selectedDuration in seconds
-        timeRemainingInSeconds = selectedDuration * 60;    
-        TimerTask task = new TimerTask() {         
+        timeRemainingInSeconds = selectedDuration * 60;
+        TimerTask task = new TimerTask() {
             
-            public void run () {                
+            public void run () {      
                 
                 // Update remaining timer lable every second
-                timeRemainingTextField.setText(Integer.toString(timeRemainingInSeconds)); 
+                timeRemainingTextField.setText(Integer.toString(timeRemainingInSeconds));
                 timeRemainingInSeconds --;
                 if (timeRemainingInSeconds == -1 || stopTheTimer) {
                     
@@ -222,23 +222,23 @@ public class Practice extends javax.swing.JFrame {
                     showResults();
                     stopTheTimer = false;
                     
-                } 
+                }
             }
             
         };
      
-        // timer.scheduleAtFixedRate(task, delay, period);    
-        timer.scheduleAtFixedRate(task, 0, 1000); 
+        // timer.scheduleAtFixedRate(task, delay, period);
+        timer.scheduleAtFixedRate(task, 0, 1000);
         
     }
     
     private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
         
-        if(timeRemainingInSeconds == selectedDurationInMinutes*60)
+        if(timeRemainingInSeconds == selectedDurationInMinutes * 60)
             this.setVisible(false);
-        else 
+        else
             // changing the boolean stopTheTimer to true, which will stop the timer.
-            stopTheTimer = true; 
+            stopTheTimer = true;
      
     }//GEN-LAST:event_endButtonActionPerformed
 
@@ -250,9 +250,9 @@ public class Practice extends javax.swing.JFrame {
         while (currentCh == ' ' || currentCh == '\n') {
             
             currentPosition++;
-            if (currentCh == ' ') 
+            if (currentCh == ' ')
                 typedTextArea.setText(typedTextArea.getText() + " ");
-            else 
+            else
                 typedTextArea.setText(typedTextArea.getText() + "\n");
 
             currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
@@ -266,17 +266,17 @@ public class Practice extends javax.swing.JFrame {
         if (firstFocus) {
             
             fillTimer(selectedDurationInMinutes);
-            firstFocus=false;
+            firstFocus = false;
             
         }
         
-        // currentPosition holds the index of the letter to be typed 
+        // currentPosition holds the index of the letter to be typed
         KeyListener listener = new KeyListener() {
 
             @Override
             public void keyPressed(KeyEvent event) {
 
-                //printEventInfo("Key Pressed", event); 
+                //printEventInfo("Key Pressed", event);
                     
             }
 
@@ -284,18 +284,21 @@ public class Practice extends javax.swing.JFrame {
 
             public void keyReleased (KeyEvent event) {
                     
-                printEventInfo("Key Released", event);
+                //printEventInfo("Key Released", event);
                      
                 if (KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
                         
                     if (currentPosition - 1 >= 0)
                         currentPosition--;
                             
-                //} else if (KeyEvent.getKeyText(event.getKeyCode()) == "Shift") { 
+                } else if (KeyEvent.getKeyText(event.getKeyCode()) == "Shift"
+                    || KeyEvent.getKeyText(event.getKeyCode()) == "Caps Lock"
+                    || KeyEvent.getKeyText(event.getKeyCode()) == "Alt"
+                    || KeyEvent.getKeyText(event.getKeyCode()) == "Ctrl") {
                         
-                    // Do nothing
+                    // The program should ignore these keys.
                         
-                } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition) 
+                } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)
                             &&  KeyEvent.getKeyText(event.getKeyCode()) == "Enter"){
                         
                     cutUselessSpaces();
@@ -319,16 +322,16 @@ public class Practice extends javax.swing.JFrame {
                         // wrongKey holds the value of key typed incorrectly
                         String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
                             
-                        if ( wrongTypedKeys.containsKey(wrongKey) ) 
+                        if ( wrongTypedKeys.containsKey(wrongKey) )
                             wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
-                        else 
+                        else
                             wrongTypedKeys.put(wrongKey, new Integer(1));
                                       
                     }
                         
                 }
                   
-                // Change the scroll position 
+                // Change the scroll position
                 origionalCodeTextArea.setCaretPosition(currentPosition);
                     
                 if( currentPosition >= origionalCodeTextArea.getText().length() - 1 ){
@@ -348,16 +351,16 @@ public class Practice extends javax.swing.JFrame {
                     
             }
             
-            private void printEventInfo (String str, KeyEvent e) {
-
-                System.out.println(str);
-                System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
-                System.out.println("   Char: " + e.getKeyChar());
-                // mode has the value if shift is pressed
-                int mods = e.getModifiersEx(); 
-                System.out.println("    Mods: " + KeyEvent.getModifiersExText(mods));
-
-            };
+//            private void printEventInfo (String str, KeyEvent e) {
+//
+//                System.out.println(str);
+//                System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
+//                System.out.println("   Char: " + e.getKeyChar());
+//                // mode has the value if shift is pressed
+//                int mods = e.getModifiersEx();
+//                System.out.println("    Mods: " + KeyEvent.getModifiersExText(mods));
+//
+//            };
         };
 
         typedTextArea.addKeyListener(listener);
