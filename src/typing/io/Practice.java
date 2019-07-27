@@ -120,12 +120,12 @@ public class Practice extends javax.swing.JFrame {
         timeRemainingLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         origionalCodeTextArea = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        typedTextArea = new javax.swing.JTextArea();
         languageTextField = new javax.swing.JTextField();
         timeRemainingTextField = new javax.swing.JTextField();
         endButton = new javax.swing.JButton();
         secondLabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        typedTextArea = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Practice!");
@@ -142,15 +142,6 @@ public class Practice extends javax.swing.JFrame {
         origionalCodeTextArea.setRows(5);
         jScrollPane1.setViewportView(origionalCodeTextArea);
 
-        typedTextArea.setColumns(20);
-        typedTextArea.setRows(5);
-        typedTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                typedTextAreaFocusGained(evt);
-            }
-        });
-        jScrollPane2.setViewportView(typedTextArea);
-
         languageTextField.setEditable(false);
 
         timeRemainingTextField.setEditable(false);
@@ -165,6 +156,13 @@ public class Practice extends javax.swing.JFrame {
         secondLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         secondLabel.setText("sec");
 
+        typedTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                typedTextAreaFocusGained(evt);
+            }
+        });
+        jScrollPane3.setViewportView(typedTextArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,25 +170,30 @@ public class Practice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                                .addComponent(timeRemainingLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(timeRemainingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(secondLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(endButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(practiceTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(115, 115, 115)
+                                .addComponent(practiceTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                                        .addComponent(timeRemainingLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(timeRemainingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(secondLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(endButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane3)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,8 +209,8 @@ public class Practice extends javax.swing.JFrame {
                     .addComponent(secondLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(endButton)
                 .addGap(23, 23, 23))
@@ -217,16 +220,23 @@ public class Practice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
-
+    
+    void showResults(){
         Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
         // Changing the boolian isIt to true, which will stop the timer.
         timerStatus = true; 
         
+    }
+    
+    private void endButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endButtonActionPerformed
+        
+        showResults();
+         
     }//GEN-LAST:event_endButtonActionPerformed
 
+    
     void cutUselessSpaces(){
         
         currentPosition++;
@@ -234,22 +244,19 @@ public class Practice extends javax.swing.JFrame {
 
         while(currentCh == ' ' || currentCh == '\n'){
             currentPosition++;
-            if (currentCh == ' ') {
+            if (currentCh == ' ') 
                 typedTextArea.setText(typedTextArea.getText() + " ");
-                System.out.println("hi?");
-            }
-            else {
+            else 
                 typedTextArea.setText(typedTextArea.getText() + "\n");
-                System.out.println("bye");
-            }
 
             currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
         }
     
     }
     
-        private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
-
+    private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
+        // TODO add your handling code here:
+        
             // currentPosition holds the index of the letter to be typed 
             KeyListener listener = new KeyListener() {
 
@@ -265,6 +272,7 @@ public class Practice extends javax.swing.JFrame {
                 public void keyReleased (KeyEvent event) {
                     
                      printEventInfo("Key Released", event);
+                     
                     if (KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
                         
                         if (currentPosition - 1 >= 0)
@@ -297,16 +305,11 @@ public class Practice extends javax.swing.JFrame {
                             // wrongKey holds the value of key typed incorrectly
                             String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
                             
-                            if ( wrongTypedKeys.containsKey(wrongKey) ) { 
-                                
+                            if ( wrongTypedKeys.containsKey(wrongKey) ) 
                                 wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
-                                
-                            } 
-                            else {
-                                
+                            else 
                                 wrongTypedKeys.put(wrongKey, new Integer(1));
-                                
-                            } 
+                            
                                 
                         }
                         
@@ -315,6 +318,10 @@ public class Practice extends javax.swing.JFrame {
                     numberOfpressedKeys++;
                     // Change the scroll position 
                     origionalCodeTextArea.setCaretPosition(currentPosition);
+                    
+                    if( currentPosition >= origionalCodeTextArea.getText().length() - 1 )
+                        showResults();
+                    
                 }
 
                 @Override
@@ -340,7 +347,8 @@ public class Practice extends javax.swing.JFrame {
 
             typedTextArea.addKeyListener(listener);
 
-        }//GEN-LAST:event_typedTextAreaFocusGained
+        
+    }//GEN-LAST:event_typedTextAreaFocusGained
 
         
         public void playSound(String soundFileName) {
@@ -408,7 +416,7 @@ public class Practice extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton endButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel languageLabel;
     private javax.swing.JTextField languageTextField;
     private javax.swing.JTextArea origionalCodeTextArea;
@@ -416,7 +424,7 @@ public class Practice extends javax.swing.JFrame {
     private javax.swing.JLabel secondLabel;
     private javax.swing.JLabel timeRemainingLabel;
     private javax.swing.JTextField timeRemainingTextField;
-    private javax.swing.JTextArea typedTextArea;
+    private javax.swing.JTextPane typedTextArea;
     // End of variables declaration//GEN-END:variables
 
 }
