@@ -31,18 +31,18 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="typedChars" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="NumberOfErrors" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
+                          <Component id="numberOfErrors" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="typedCharsNo" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
-                          <Component id="NoOfErrors" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="noOfErrors" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="TypingSpeed" min="-2" pref="189" max="-2" attributes="0"/>
+                      <Component id="typingSpeed" min="-2" pref="189" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="NoOfWords" min="-2" pref="124" max="-2" attributes="0"/>
+                      <Component id="noOfWords" min="-2" pref="124" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane2" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
               </Group>
@@ -55,8 +55,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="TypingSpeed" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="NoOfWords" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="typingSpeed" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="noOfWords" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -65,8 +65,8 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NumberOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="NoOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="numberOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="noOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="132" max="-2" attributes="0"/>
@@ -76,7 +76,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="TypingSpeed">
+    <Component class="javax.swing.JLabel" name="typingSpeed">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sakkal Majalla" size="24" style="0"/>
@@ -93,7 +93,7 @@
         <Property name="text" type="java.lang.String" value="typedChars"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NumberOfErrors">
+    <Component class="javax.swing.JLabel" name="numberOfErrors">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sakkal Majalla" size="24" style="0"/>
@@ -101,7 +101,7 @@
         <Property name="text" type="java.lang.String" value="Number of Errors:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NoOfErrors">
+    <Component class="javax.swing.JLabel" name="noOfErrors">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sakkal Majalla" size="24" style="0"/>
@@ -142,7 +142,7 @@
         <Property name="text" type="java.lang.String" value="No. of Typed Characters: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NoOfWords">
+    <Component class="javax.swing.JLabel" name="noOfWords">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sakkal Majalla" size="24" style="0"/>

@@ -22,14 +22,16 @@ import javax.sound.sampled.Clip;
 
 
 public class Practice extends javax.swing.JFrame {
+    
     //Timer Related Variables
     private int timeRemainingInSeconds = 0;     // Time remaining for down-counting timer  
     private int selectedDurationInMinutes = 0;  // Selected duration for practice in minutes 
     private Boolean stopTheTimer = false;       // When 'stopTheTimer' set to true, timer will stop.
     private Boolean firstFocus = true;
+    
     //Error manegemnt Variables
     private int numberOferrors = 0;             // Count number of errors 
-    private int numberOfpressedKeys = 0;        // Count number of any keystroke
+    private int numberOfCorrectKeystroke = 0; // Count number of correct keystroke
     private int currentPosition = 0;            // This will hold where the next character is
      
     //Map of Errors
@@ -164,7 +166,7 @@ public class Practice extends javax.swing.JFrame {
 
     void showResults() {
         
-        Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
+        Results resultsObject = new Results(numberOfCorrectKeystroke, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
         
@@ -235,7 +237,7 @@ public class Practice extends javax.swing.JFrame {
         if(timeRemainingInSeconds == selectedDurationInMinutes*60)
             this.setVisible(false);
         else 
-            // changing the boolian timerStatus to true, which will stop the timer.
+            // changing the boolean stopTheTimer to true, which will stop the timer.
             stopTheTimer = true; 
      
     }//GEN-LAST:event_endButtonActionPerformed
@@ -289,9 +291,9 @@ public class Practice extends javax.swing.JFrame {
                     if (currentPosition - 1 >= 0)
                         currentPosition--;
                             
-                } else if (KeyEvent.getKeyText(event.getKeyCode()) == "Shift") { 
+                //} else if (KeyEvent.getKeyText(event.getKeyCode()) == "Shift") { 
                         
-                    numberOfpressedKeys--;
+                    // Do nothing
                         
                 } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition) 
                             &&  KeyEvent.getKeyText(event.getKeyCode()) == "Enter"){
@@ -305,6 +307,7 @@ public class Practice extends javax.swing.JFrame {
                         // If the key typed is correct the text color becomes green
                         typedTextArea.setForeground(new Color(0, 128, 0));
                         currentPosition++;
+                        numberOfCorrectKeystroke++;
                             
                     } else {
                             
@@ -325,13 +328,12 @@ public class Practice extends javax.swing.JFrame {
                         
                 }
                   
-                numberOfpressedKeys++;
                 // Change the scroll position 
                 origionalCodeTextArea.setCaretPosition(currentPosition);
                     
                 if( currentPosition >= origionalCodeTextArea.getText().length() - 1 ){
                     
-                    // changing the boolian timerStatus to true, which will stop the timer.
+                    // changing the boolean stopTheTimer to true, which will stop the timer.
                     stopTheTimer = true;
                     
                 }

@@ -4,54 +4,43 @@
         - typing speed 'number of words per minutes'.
         - number of errors through the practice.
         - list of all errors (all error-ed characters with a counter for each).
-*/
 
-//// Aseel's comments 
+
+    (*) Typing speed is measured in WpM (Word per Minute). 
+    (*) WpM is usually measured using a standard word length, which is 5 characters.  
+*/
 
 package typing.io;
 
 import java.util.Map;
 import java.util.Set;
 
-/**
- *
- * @author ghaid
- */
 
 public class Results extends javax.swing.JFrame {
 
     public Results() {
+        
         initComponents();
+        
     }
     
-    //// Here i override the constructor, to accept data from 'Practice' Frame.
-    public Results(int nummberOfpressedKeys, int numberOferrors, int timeInSeconds, Map< String, Integer > wrongTypedKeys) {
+    // Here i override the constructor, to accept data from 'Practice' Frame.
+    public Results(int numberOfCorrectKeystroke, int numberOferrors, int timeInSeconds, Map< String, Integer > wrongTypedKeys) {
         
-        initComponents();
-        
-        //// Typing speed is measured in WpM (Word per Minute) 
-        //// WpM is usually measured using a standard word length, which is 5 characters
-        //// any keystroke is considered as a character... 
-        //// so speed variable will calculated by the follwing equation.
-        ////  speed =           ( number of standard words ) / (time spent in minutes)
-                
-        float speed = (float) ( ( nummberOfpressedKeys / 5.0 ) / (  timeInSeconds / 60.0 ) );
-        //// 'speed and time' format needed is #.## 
-        String speedWithTwoDigits = String.format("%.02f", speed);
-        String timeInSecondsWithTwoDigits = String.format("%.02f", timeInSeconds / 60.0);
+        initComponents();             
+        int speed = (int) ( ( numberOfCorrectKeystroke / 5.0 ) / (  timeInSeconds / 60.0 ) );
         
         // Showing the result
-        NoOfWords.setText(speedWithTwoDigits.toString() + "  WPM");
-        typedCharsNo.setText(Integer.toString(nummberOfpressedKeys));
-        NoOfErrors.setText(String.valueOf(numberOferrors));
-        
-        
+        noOfWords.setText(speed + "  WPM");
+        typedCharsNo.setText(Integer.toString(numberOfCorrectKeystroke));
+        noOfErrors.setText(String.valueOf(numberOferrors));
+           
         // Printing list of Errors
         Set< Map.Entry< String,Integer> > wrongTypedKeysSet = wrongTypedKeys.entrySet();
         String ErrorList = "";
         
         for (Map.Entry< String, Integer> me:wrongTypedKeysSet) { 
-            if(me.getKey().equals(" ") || me.getKey().equals("\n"))
+            if ( me.getKey().equals(" ") || me.getKey().equals("\n") )
                 continue;
             
             Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
@@ -64,34 +53,35 @@ public class Results extends javax.swing.JFrame {
         errorListTextArea.setText(ErrorList);
           
     } 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TypingSpeed = new javax.swing.JLabel();
+        typingSpeed = new javax.swing.JLabel();
         typedCharsNo = new javax.swing.JLabel();
-        NumberOfErrors = new javax.swing.JLabel();
-        NoOfErrors = new javax.swing.JLabel();
+        numberOfErrors = new javax.swing.JLabel();
+        noOfErrors = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         errorListTextArea = new javax.swing.JTextArea();
         typedChars = new javax.swing.JLabel();
-        NoOfWords = new javax.swing.JLabel();
+        noOfWords = new javax.swing.JLabel();
 
         setTitle("Results");
 
-        TypingSpeed.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
-        TypingSpeed.setText("Typing Speed:");
+        typingSpeed.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        typingSpeed.setText("Typing Speed:");
 
         typedCharsNo.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         typedCharsNo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         typedCharsNo.setText("typedChars");
 
-        NumberOfErrors.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
-        NumberOfErrors.setText("Number of Errors:");
+        numberOfErrors.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        numberOfErrors.setText("Number of Errors:");
 
-        NoOfErrors.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
-        NoOfErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NoOfErrors.setText("0");
+        noOfErrors.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        noOfErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        noOfErrors.setText("0");
 
         errorListTextArea.setEditable(false);
         errorListTextArea.setBackground(new java.awt.Color(240, 240, 240));
@@ -103,9 +93,9 @@ public class Results extends javax.swing.JFrame {
         typedChars.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         typedChars.setText("No. of Typed Characters: ");
 
-        NoOfWords.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
-        NoOfWords.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NoOfWords.setText("NoW");
+        noOfWords.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        noOfWords.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        noOfWords.setText("NoW");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,15 +107,15 @@ public class Results extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(typedChars)
-                            .addComponent(NumberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(numberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(typedCharsNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NoOfErrors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(noOfErrors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(TypingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(typingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(NoOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(noOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -134,16 +124,16 @@ public class Results extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TypingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NoOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(typingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typedChars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(typedCharsNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NumberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NoOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
@@ -154,44 +144,62 @@ public class Results extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {
+        
         try {
+            
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                
                 if ("Nimbus".equals(info.getName())) {
+                    
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
+            
             java.util.logging.Logger.getLogger(Results.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
         } catch (InstantiationException ex) {
+            
             java.util.logging.Logger.getLogger(Results.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
         } catch (IllegalAccessException ex) {
+            
             java.util.logging.Logger.getLogger(Results.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            
             java.util.logging.Logger.getLogger(Results.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
         }
-        //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
                 new Results().setVisible(true);
             }
+            
         });
+        
     }
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel NoOfErrors;
-    private javax.swing.JLabel NoOfWords;
-    private javax.swing.JLabel NumberOfErrors;
-    private javax.swing.JLabel TypingSpeed;
     private javax.swing.JTextArea errorListTextArea;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel noOfErrors;
+    private javax.swing.JLabel noOfWords;
+    private javax.swing.JLabel numberOfErrors;
     private javax.swing.JLabel typedChars;
     private javax.swing.JLabel typedCharsNo;
+    private javax.swing.JLabel typingSpeed;
     // End of variables declaration//GEN-END:variables
 
     private void Syste(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        // To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
+    
     }
 }
