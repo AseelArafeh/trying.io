@@ -35,62 +35,61 @@ public class Results extends javax.swing.JFrame {
         //// so speed variable will calculated by the follwing equation.
         ////  speed =           ( number of standard words ) / (time spent in minutes)
                 
-        float speed = (float) ( ( nummberOfpressedKeys/5.0 ) / (  timeInSeconds/60.0 ) );
+        float speed = (float) ( ( nummberOfpressedKeys / 5.0 ) / (  timeInSeconds / 60.0 ) );
         //// 'speed and time' format needed is #.## 
         String speedWithTwoDigits = String.format("%.02f", speed);
-        String timeInSecondsWithTwoDigits = String.format("%.02f", timeInSeconds/60.0);
-        //// set the speed to NoOfWords text field, after converting float data type to String.
-        NoOfWords.setText(speedWithTwoDigits);
-        //// set the time to timeSelected text field, after convert seconds to minutes 
-        timeSelected.setText(timeInSecondsWithTwoDigits);
-        //// set the number of errors to NoOfErrors text field.
+        String timeInSecondsWithTwoDigits = String.format("%.02f", timeInSeconds / 60.0);
+        
+        // Showing the result
+        NoOfWords.setText(speedWithTwoDigits.toString() + "  WPM");
+        typedCharsNo.setText(Integer.toString(nummberOfpressedKeys));
         NoOfErrors.setText(String.valueOf(numberOferrors));
         
         
-        // Implementing the list of charcters.
+        // Printing list of Errors
         Set< Map.Entry< String,Integer> > wrongTypedKeysSet = wrongTypedKeys.entrySet();
-        
         String ErrorList = "";
         
         for (Map.Entry< String, Integer> me:wrongTypedKeysSet) { 
-           Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
-           System.out.print(me.getKey()+":"); 
-           System.out.println(me.getValue()); 
-           ErrorList += ("    " + me.getKey() + ":    " + me.getValue() + "    Times" + "\n");
+            if(me.getKey().equals(" ") || me.getKey().equals("\n"))
+                continue;
+            
+            Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
+            System.out.print(me.getKey()+":"); 
+            System.out.println(me.getValue()); 
+            String currentError = String.format("   %s\t%c%-5d Times\n", me.getKey(), ':', me.getValue());
+            ErrorList += (currentError);
        } 
         
         errorListTextArea.setText(ErrorList);
-        
-        
+          
     } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         TypingSpeed = new javax.swing.JLabel();
-        NoOfWords = new javax.swing.JLabel();
-        per = new javax.swing.JLabel();
-        timeSelected = new javax.swing.JLabel();
+        typedCharsNo = new javax.swing.JLabel();
         NumberOfErrors = new javax.swing.JLabel();
         NoOfErrors = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         errorListTextArea = new javax.swing.JTextArea();
+        typedChars = new javax.swing.JLabel();
+        NoOfWords = new javax.swing.JLabel();
 
         setTitle("Results");
 
+        TypingSpeed.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         TypingSpeed.setText("Typing Speed:");
 
-        NoOfWords.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NoOfWords.setText("NoW");
+        typedCharsNo.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        typedCharsNo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        typedCharsNo.setText("typedChars");
 
-        per.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        per.setText("per");
-
-        timeSelected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        timeSelected.setText("minute");
-
+        NumberOfErrors.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         NumberOfErrors.setText("Number of Errors:");
 
+        NoOfErrors.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         NoOfErrors.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NoOfErrors.setText("0");
 
@@ -101,43 +100,51 @@ public class Results extends javax.swing.JFrame {
         errorListTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Errors List"));
         jScrollPane2.setViewportView(errorListTextArea);
 
+        typedChars.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        typedChars.setText("No. of Typed Characters: ");
+
+        NoOfWords.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        NoOfWords.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        NoOfWords.setText("NoW");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(TypingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(NoOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(per, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(timeSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(typedChars)
+                            .addComponent(NumberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(typedCharsNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NoOfErrors, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(NumberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NoOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TypingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(NoOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(NoOfWords, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                        .addComponent(TypingSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
-                    .addComponent(per, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(timeSelected, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NoOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NumberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TypingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NoOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(typedChars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(typedCharsNo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NumberOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NoOfErrors, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -180,8 +187,8 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JLabel TypingSpeed;
     private javax.swing.JTextArea errorListTextArea;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel per;
-    private javax.swing.JLabel timeSelected;
+    private javax.swing.JLabel typedChars;
+    private javax.swing.JLabel typedCharsNo;
     // End of variables declaration//GEN-END:variables
 
     private void Syste(String string) {

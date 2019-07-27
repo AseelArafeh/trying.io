@@ -26,21 +26,23 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="TypingSpeed" min="-2" pref="90" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="NoOfWords" min="-2" pref="58" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="per" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="timeSelected" min="-2" pref="68" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="typedChars" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="NumberOfErrors" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="typedCharsNo" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
+                          <Component id="NoOfErrors" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="NumberOfErrors" min="-2" pref="102" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="NoOfErrors" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="TypingSpeed" min="-2" pref="189" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="NoOfWords" min="-2" pref="124" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane2" alignment="0" min="-2" pref="344" max="-2" attributes="0"/>
               </Group>
@@ -51,21 +53,22 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="NoOfWords" alignment="3" pref="84" max="32767" attributes="0"/>
-                      <Component id="TypingSpeed" alignment="3" pref="84" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="per" alignment="0" max="32767" attributes="0"/>
-                  <Component id="timeSelected" alignment="0" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TypingSpeed" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="NoOfWords" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="NoOfErrors" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="NumberOfErrors" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="typedChars" alignment="3" max="32767" attributes="0"/>
+                  <Component id="typedCharsNo" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="NumberOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="NoOfErrors" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="132" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
@@ -75,34 +78,34 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="TypingSpeed">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sakkal Majalla" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Typing Speed:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NoOfWords">
+    <Component class="javax.swing.JLabel" name="typedCharsNo">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sakkal Majalla" size="24" style="0"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="NoW"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="per">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="per"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="timeSelected">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="minute"/>
+        <Property name="text" type="java.lang.String" value="typedChars"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="NumberOfErrors">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sakkal Majalla" size="24" style="0"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Number of Errors:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="NoOfErrors">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sakkal Majalla" size="24" style="0"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
@@ -131,5 +134,22 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="typedChars">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sakkal Majalla" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="No. of Typed Characters: "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="NoOfWords">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Sakkal Majalla" size="24" style="0"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="NoW"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>
