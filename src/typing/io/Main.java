@@ -5,7 +5,7 @@
     First one, move us to another frame, its 'Upload Source Code' frame.. 
                which give user the ability to upload his/her own code, to practise it.
     While the  second one move us to a 'selectLanguage' frame, to select in which language does user prefer practicing?
-    and finally, we have an exit button, to exit from app.
+    and finally, we have an exit button, to exit from app
     
 */
 
@@ -18,25 +18,6 @@ import javax.swing.JOptionPane;
  *
  * @author Aseel
  */
-
-
-// Add documentation please... DONE
-// All buttons names should all be changed to a name similar to their action... DONE
-// After a new frame appears the main frame should disappear .. Add the following statement.. this.setVisible(false);
- 
-//// I think it's better to stay it or to put a 'main' button in each frame, which move to the 'Main' frame,
-//// this is importent if a user wanna to return to the main interface at anytime.
- 
- 
-// Add a comment before each button declaring its functionality.
-//// they are in 'do not modify' block, so i put all comments before it....DONE
- 
-// All buttons need to be moved a little bit.. They're not in the middle of the screen
-//// You can update it... i could not found a property releated to that.
- 
-// The frame always appears in the top right corner of the user's screen.. It must be moved into the middle....DONE
-//// Okay, I update it for every frames. 
- 
 
 public class Main extends javax.swing.JFrame {
 
@@ -154,18 +135,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-
-    
-    
-//// Here, i explain functionality of each button declared in the below, do not modify block.
- 
-//// button declaring its functionality.
-//// exitButton: exit from app.
-//// practiceButton: move to practice frame.
-//// uploadSourceCodeButton: move to UploadSourceCode frame.
-//// welcomingLabel: contain 'welcome to typing.io' statement.
- 
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
@@ -175,7 +144,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel welcomingLabel;
     // End of variables declaration//GEN-END:variables
 
-//// Please acknowledge me when reading the this updated code, and remove every unnecessary comments.
-//// Thanks for reviewing my code :) 
+    //// button declaring its functionality.
+    //// exitButton: exit from app.
+    //// practiceButton: move to practice frame.
+    //// uploadSourceCodeButton: move to UploadSourceCode frame.
+    //// welcomingLabel: contain 'welcome to typing.io' statement.
 
 }
