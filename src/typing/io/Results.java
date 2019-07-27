@@ -46,7 +46,7 @@ public class Results extends javax.swing.JFrame {
             Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
             System.out.print(me.getKey()+":"); 
             System.out.println(me.getValue()); 
-            String currentError = String.format("   %s\t%c%-5d Times\n", me.getKey(), ':', me.getValue());
+            String currentError = String.format("   %s\t%c%-5d %s\n", me.getKey(), ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
             ErrorList += (currentError);
        } 
         
