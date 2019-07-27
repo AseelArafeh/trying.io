@@ -31,18 +31,11 @@ public class Practice extends javax.swing.JFrame {
     
     //Error manegemnt Variables
     private int numberOferrors = 0;             // Count number of errors 
-    private int numberOfCorrectKeystroke = 0; // Count number of correct keystroke
+    private int numberOfCorrectKeystroke = 0;   // Count number of correct keystroke
     private int currentPosition = 0;            // This will hold where the next character is
      
     //Map of Errors
     private Map< String, Integer > wrongTypedKeys =  new HashMap< String, Integer >();
-    
-    
-    public Practice() {
-        
-        initComponents();
-        
-    }
     
     public Practice (String selectedLanguage, int selectedDuration) throws IOException {
         
@@ -418,7 +411,11 @@ public class Practice extends javax.swing.JFrame {
             
             public void run() {
                 
-                new Practice().setVisible(true);
+                try {
+                    new Practice("", 0).setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Practice.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }
             

@@ -14,11 +14,6 @@ package typing.io;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Aseel
- */
-
 public class Main extends javax.swing.JFrame {
 
     public Main() {
@@ -144,10 +139,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel welcomingLabel;
     // End of variables declaration//GEN-END:variables
 
-    //// button declaring its functionality.
-    //// exitButton: exit from app.
-    //// practiceButton: move to practice frame.
-    //// uploadSourceCodeButton: move to UploadSourceCode frame.
-    //// welcomingLabel: contain 'welcome to typing.io' statement.
+    // exitButton: exit from app.
+    // practiceButton: move to practice frame.
+    // uploadSourceCodeButton: move to UploadSourceCode frame.
+    // welcomingLabel: contain 'welcome to typing.io' statement.
 
 }

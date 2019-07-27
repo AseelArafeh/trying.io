@@ -7,15 +7,9 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author ghaid
- */
+
 public class UploadSourceCode extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UploadSourceCode
-     */
     public UploadSourceCode() {
         initComponents();
     }
@@ -116,63 +110,72 @@ public class UploadSourceCode extends javax.swing.JFrame {
 
         private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
                 
-                String languageName = langName.getText();
-                String languageContent = langContent.getText();
+            String languageName = langName.getText();
+            String languageContent = langContent.getText();
                 
-                if( languageName.equals("") ) 
-                        JOptionPane.showMessageDialog(this, "You need to enter the language name.");
-                else if( languageContent.equals("") )
-                        JOptionPane.showMessageDialog(this, "There is no content!!");
-                else {
-                        // If both name and content exist then I must create a file containing 
-                        // the script so the user can practise it.
+            if ( languageName.equals("") ) { 
+                
+                JOptionPane.showMessageDialog(this, "You need to enter the language name.");
+                
+            } else if ( languageContent.equals("") ) {
+               
+                JOptionPane.showMessageDialog(this, "There is no content!!");
+                
+            } else {
+                
+                // If both name and content exist then I must create a file containing 
+                // the script so the user can practise it.
                         
-                        boolean exists = false; // I want this boolean to check if language name already exists.. But I'll do it later
-                        
-                        if ( !exists ) {
+                // I want 'exists' boolean to check if language name already exists.. But I'll do it later
+                boolean exists = false;  
+                
+                if ( !exists ) {
                                 
-                                try {
+                    try {
                                         
-                                        File toBeCreated = new File("practiceLanguages\\" + languageName.concat(".txt"));  
-                                        // createNewFile method creates a file and returns true if it succeeds
+                        File toBeCreated = new File("practiceLanguages\\" + languageName.concat(".txt"));  
+                        // createNewFile method creates a file and returns true if it succeeds
                                         
-                                        if ( toBeCreated.createNewFile() ){
+                        if ( toBeCreated.createNewFile() ) {
                                                 
-                                                // If the file exists this code will add content to it.
+                            // If the file exists this code will add content to it.                                                
+                            JOptionPane.showMessageDialog(this, "File Created :) ");
+                            PrintWriter contentAdder = new PrintWriter(toBeCreated);
+                            contentAdder.print(languageContent);
+                            contentAdder.close();
                                                 
-                                                JOptionPane.showMessageDialog(this, "File Created :) ");
-                                                PrintWriter contentAdder = new PrintWriter(toBeCreated);
-                                                contentAdder.print(languageContent);
-                                                contentAdder.close();
-                                                
-                                        } else {
-                                                JOptionPane.showMessageDialog(this, "Couldn't Create File !");
-                                        }
-                                        
-                                        
-                                } catch (IOException ex) {
-                                        Logger.getLogger(UploadSourceCode.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                                        
                         } else {
-                                JOptionPane.showMessageDialog(this, "This language already exists, Please pick another name");
+                            
+                            JOptionPane.showMessageDialog(this, "Couldn't Create File !");
+                            
                         }
+                                                         
+                    } catch (IOException ex) {
                         
+                        Logger.getLogger(UploadSourceCode.class.getName()).log(Level.SEVERE, null, ex);
                         
-                        
-                        
-                        
+                    }
+                                        
+                } else {
+                    
+                    JOptionPane.showMessageDialog(this, "This language already exists, Please pick another name");
+                    
                 }
+ 
+            }
+            
         }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        
         // TODO add your handling code here:
         this.setVisible(false);
+        
     }//GEN-LAST:event_cancelButtonActionPerformed
 
 
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -195,7 +198,6 @@ public class UploadSourceCode extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UploadSourceCode().setVisible(true);

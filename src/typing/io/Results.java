@@ -18,13 +18,6 @@ import java.util.Set;
 
 public class Results extends javax.swing.JFrame {
 
-    public Results() {
-        
-        initComponents();
-        
-    }
-    
-    // Here i override the constructor, to accept data from 'Practice' Frame.
     public Results(int numberOfCorrectKeystroke, int numberOferrors, int timeInSeconds, Map< String, Integer > wrongTypedKeys) {
         
         initComponents();             
@@ -177,7 +170,7 @@ public class Results extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             
             public void run() {
-                new Results().setVisible(true);
+                new Results(0, 0, 0, null).setVisible(true);
             }
             
         });

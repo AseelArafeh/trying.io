@@ -9,10 +9,7 @@ import javafx.scene.control.ComboBox;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
-/**
- *
- * @author Aseel
- */
+
 public class selectLanguage extends javax.swing.JFrame {
 
         
@@ -28,9 +25,9 @@ public class selectLanguage extends javax.swing.JFrame {
         ArrayList<String> jumboBoxContent = new ArrayList();
         for (File listOfFile : listOfFiles) {
                 
-                // The first line cuts the extension name ".txt" from the files names
-                String langName = listOfFile.getName().substring(0, listOfFile.getName().lastIndexOf("."));
-                jumboBoxContent.add(langName);
+            // The first line cuts the extension name ".txt" from the files names
+            String langName = listOfFile.getName().substring(0, listOfFile.getName().lastIndexOf("."));
+            jumboBoxContent.add(langName);
                 
         }
         
@@ -38,7 +35,9 @@ public class selectLanguage extends javax.swing.JFrame {
         // Converting the ArrayList to an Array so it can be converted to jumboBoxModel.
         String str[] = new String[jumboBoxContent.size()]; 
         for (int j = 0; j < jumboBoxContent.size(); j++) { 
+            
             str[j] = jumboBoxContent.get(j); 
+            
         }
         
         
@@ -134,13 +133,17 @@ public class selectLanguage extends javax.swing.JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
 
         Practice practiceObject;
-            try {
-                    practiceObject = new Practice((String) langList.getSelectedItem() ,Integer.parseInt((String) durationList.getSelectedItem()) );
-                    practiceObject.setVisible(true);
-                    this.setVisible(false); 
-            } catch (IOException ex) {
-                    Logger.getLogger(selectLanguage.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+                
+            practiceObject = new Practice((String) langList.getSelectedItem() ,Integer.parseInt((String) durationList.getSelectedItem()) );
+            practiceObject.setVisible(true);
+            this.setVisible(false); 
+                
+        } catch (IOException ex) {
+                
+            Logger.getLogger(selectLanguage.class.getName()).log(Level.SEVERE, null, ex);
+               
+        }
         
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -156,6 +159,7 @@ public class selectLanguage extends javax.swing.JFrame {
                 new selectLanguage().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
