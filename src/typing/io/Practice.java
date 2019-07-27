@@ -227,6 +227,27 @@ public class Practice extends javax.swing.JFrame {
         
     }//GEN-LAST:event_endButtonActionPerformed
 
+    void cutUselessSpaces(){
+        
+        currentPosition++;
+        char currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
+
+        while(currentCh == ' ' || currentCh == '\n'){
+            currentPosition++;
+            if (currentCh == ' ') {
+                typedTextArea.setText(typedTextArea.getText() + " ");
+                System.out.println("hi?");
+            }
+            else {
+                typedTextArea.setText(typedTextArea.getText() + "\n");
+                System.out.println("bye");
+            }
+
+            currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
+        }
+    
+    }
+    
         private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
 
             // currentPosition holds the index of the letter to be typed 
@@ -235,8 +256,15 @@ public class Practice extends javax.swing.JFrame {
                 @Override
                 public void keyPressed(KeyEvent event) {
 
-                    printEventInfo("Key Pressed", event); 
+                    //printEventInfo("Key Pressed", event); 
                     
+                }
+
+                @Override
+
+                public void keyReleased (KeyEvent event) {
+                    
+                     printEventInfo("Key Released", event);
                     if (KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
                         
                         if (currentPosition - 1 >= 0)
@@ -246,8 +274,12 @@ public class Practice extends javax.swing.JFrame {
                         
                         numberOfpressedKeys--;
                         
-                    }
-                    else {
+                    } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition) 
+                        &&  KeyEvent.getKeyText(event.getKeyCode()) == "Enter"){
+                        
+                        cutUselessSpaces();
+                       
+                    } else {
                         
                         if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
                             
@@ -283,15 +315,6 @@ public class Practice extends javax.swing.JFrame {
                     numberOfpressedKeys++;
                     // Change the scroll position 
                     origionalCodeTextArea.setCaretPosition(currentPosition);
-                    
-                }
-
-                @Override
-
-                public void keyReleased (KeyEvent event) {
-                    
-                    // printEventInfo("Key Released", event);
-                    
                 }
 
                 @Override
