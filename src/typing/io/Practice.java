@@ -90,13 +90,9 @@ public class Practice extends javax.swing.JFrame {
                 timeRemainingInSeconds --;
                 if (timeRemainingInSeconds == -1) {
                     
+                    showResults();
                     timer.cancel();
-                    Results resultsObject = new Results(numberOfpressedKeys, numberOferrors, (selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
-                    resultsObject.setVisible(true);
-                    //this.setVisible(false);
-                    // Changing the boolian isIt to true, which will stop the timer.
-                    timerStatus = true; 
-                    
+                  
                 } else if (timerStatus) {
                     
                     timer.cancel();
@@ -222,6 +218,7 @@ public class Practice extends javax.swing.JFrame {
 
     
     void showResults(){
+        
         Results resultsObject = new Results(numberOfpressedKeys, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
