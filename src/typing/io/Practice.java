@@ -67,6 +67,8 @@ public class Practice extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Practice!");
 
+        practiceTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        practiceTitle.setForeground(new java.awt.Color(0, 204, 102));
         practiceTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         practiceTitle.setText("Practice!");
 
@@ -79,6 +81,7 @@ public class Practice extends javax.swing.JFrame {
         origionalCodeTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         origionalCodeTextArea.setLineWrap(true);
         origionalCodeTextArea.setRows(5);
+        origionalCodeTextArea.setMargin(new java.awt.Insets(4, 4, 4, 4));
         jScrollPane1.setViewportView(origionalCodeTextArea);
 
         languageTextField.setEditable(false);
@@ -150,7 +153,7 @@ public class Practice extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(endButton)
                 .addGap(23, 23, 23))

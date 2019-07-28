@@ -37,11 +37,9 @@ public class Results extends javax.swing.JFrame {
                 continue;
             
             Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
-            System.out.print(me.getKey()+":"); 
-            System.out.println(me.getValue()); 
-            String currentError = String.format("   %s\t%c%-5d %s\n", me.getKey(), ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
+            String currentError = String.format("   %s\t%c %-5d %s\n", me.getKey(), ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
             ErrorList += (currentError);
-       } 
+        } 
         
         errorListTextArea.setText(ErrorList);
           
@@ -80,6 +78,7 @@ public class Results extends javax.swing.JFrame {
         errorListTextArea.setBackground(new java.awt.Color(240, 240, 240));
         errorListTextArea.setColumns(20);
         errorListTextArea.setRows(5);
+        errorListTextArea.setTabSize(4);
         errorListTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Errors List"));
         jScrollPane2.setViewportView(errorListTextArea);
 
