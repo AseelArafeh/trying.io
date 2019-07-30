@@ -67,27 +67,37 @@ public class Practice extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Practice!");
 
-        practiceTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        practiceTitle.setForeground(new java.awt.Color(0, 204, 102));
+        practiceTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        practiceTitle.setForeground(new java.awt.Color(153, 0, 153));
         practiceTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         practiceTitle.setText("Practice!");
 
+        languageLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         languageLabel.setText("Language");
 
+        timeRemainingLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         timeRemainingLabel.setText("Time Remaining");
 
         origionalCodeTextArea.setEditable(false);
         origionalCodeTextArea.setColumns(20);
-        origionalCodeTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        origionalCodeTextArea.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         origionalCodeTextArea.setLineWrap(true);
         origionalCodeTextArea.setRows(5);
         origionalCodeTextArea.setMargin(new java.awt.Insets(4, 4, 4, 4));
         jScrollPane1.setViewportView(origionalCodeTextArea);
 
         languageTextField.setEditable(false);
+        languageTextField.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        languageTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                languageTextFieldActionPerformed(evt);
+            }
+        });
 
         timeRemainingTextField.setEditable(false);
+        timeRemainingTextField.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
 
+        endButton.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         endButton.setText("End");
         endButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,10 +105,11 @@ public class Practice extends javax.swing.JFrame {
             }
         });
 
+        secondLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         secondLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         secondLabel.setText("sec");
 
-        typedTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        typedTextArea.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         typedTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 typedTextAreaFocusGained(evt);
@@ -113,50 +124,46 @@ public class Practice extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(115, 115, 115)
-                                .addComponent(practiceTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                                        .addComponent(timeRemainingLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(timeRemainingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(secondLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(endButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane3)))
-                .addContainerGap())
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(endButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(timeRemainingLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(timeRemainingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(secondLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(practiceTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(22, 22, 22)
                 .addComponent(practiceTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(languageLabel)
                     .addComponent(timeRemainingLabel)
                     .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(timeRemainingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(secondLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(endButton)
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         pack();
@@ -284,21 +291,22 @@ public class Practice extends javax.swing.JFrame {
             public void keyReleased (KeyEvent event) {
                     
                 //printEventInfo("Key Released", event);
-                     
-                if (KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
+                if (currentPosition >= typedTextArea.getText().length() )
+                    return;
+                if (KeyEvent.getKeyText(event.getKeyCode()).equals("Backspace")) {
                         
                     if (currentPosition - 1 >= 0)
                         currentPosition--;
                             
-                } else if (KeyEvent.getKeyText(event.getKeyCode()) == "Shift"
-                    || KeyEvent.getKeyText(event.getKeyCode()) == "Caps Lock"
-                    || KeyEvent.getKeyText(event.getKeyCode()) == "Alt"
-                    || KeyEvent.getKeyText(event.getKeyCode()) == "Ctrl") {
+                } else if (KeyEvent.getKeyText(event.getKeyCode()).equals("Shift")
+                    || KeyEvent.getKeyText(event.getKeyCode()).equals("Caps Lock")
+                    || KeyEvent.getKeyText(event.getKeyCode()).equals("Alt")  
+                    || KeyEvent.getKeyText(event.getKeyCode()).equals("Ctrl")) {
                         
                     // The program should ignore these keys.
                         
                 } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)
-                            &&  KeyEvent.getKeyText(event.getKeyCode()) == "Enter"){
+                            &&  KeyEvent.getKeyText(event.getKeyCode()).equals("Enter")){
                         
                     cutUselessSpaces();
                        
@@ -365,6 +373,10 @@ public class Practice extends javax.swing.JFrame {
         typedTextArea.addKeyListener(listener);
 
     }//GEN-LAST:event_typedTextAreaFocusGained
+
+    private void languageTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_languageTextFieldActionPerformed
 
     public void playSound(String soundFileName) {
             

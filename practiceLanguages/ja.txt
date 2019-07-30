@@ -1,0 +1,23 @@
+if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
+                            
+                            // If the key typed is correct the text color becomes green
+                            typedTextArea.setForeground(new Color(0, 128, 0));
+                            currentPosition++;
+                            
+                        } else {
+                            
+                            typedTextArea.setForeground(Color.RED);
+                            currentPosition++;
+                            numberOferrors++;
+ 
+                            // wrongKey holds the value of key typed incorrectly
+                            String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
+                            
+                            if ( wrongTypedKeys.containsKey(wrongKey) ) 
+                                wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
+                            else 
+                                wrongTypedKeys.put(wrongKey, new Integer(1));
+                                
+                        }
+
+}

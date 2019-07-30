@@ -33,11 +33,18 @@ public class Results extends javax.swing.JFrame {
         String ErrorList = "";
         
         for (Map.Entry< String, Integer> me:wrongTypedKeysSet) { 
-            if ( me.getKey().equals(" ") || me.getKey().equals("\n") )
+            if ( me.getKey().equals(" ")  ){
+                String currentError = String.format("       %s\t%c %-5d %s\n", "Space", ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
+                ErrorList += (currentError);
                 continue;
+            } else if ( me.getKey().equals("\n")) {
+                String currentError = String.format("       %s\t%c %-5d %s\n", "Enter", ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
+                ErrorList += (currentError);
+                continue;
+            }
             
             Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
-            String currentError = String.format("   %s\t%c %-5d %s\n", me.getKey(), ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
+            String currentError = String.format("       %s\t%c %-5d %s\n", me.getKey(), ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
             ErrorList += (currentError);
         } 
         
@@ -77,8 +84,9 @@ public class Results extends javax.swing.JFrame {
         errorListTextArea.setEditable(false);
         errorListTextArea.setBackground(new java.awt.Color(240, 240, 240));
         errorListTextArea.setColumns(20);
+        errorListTextArea.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         errorListTextArea.setRows(5);
-        errorListTextArea.setTabSize(4);
+        errorListTextArea.setTabSize(7);
         errorListTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Errors List"));
         jScrollPane2.setViewportView(errorListTextArea);
 

@@ -1,0 +1,76 @@
+public void keyReleased (KeyEvent event) {
+                    
+                printEventInfo("Key Released", event);
+                     
+                if (KeyEvent.getKeyText(event.getKeyCode()) == "Backspace") {
+                        
+                    if (currentPosition - 1 >= 0)
+                        currentPosition--;
+                            
+                } else if (KeyEvent.getKeyText(event.getKeyCode()) == "Shift") {
+                        
+                    numberOfpressedKeys--;
+                        
+                } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)
+                            &&  KeyEvent.getKeyText(event.getKeyCode()) == "Enter") {
+                        
+                    cutUselessSpaces();
+                       
+                } else {
+                        
+                    if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
+                            
+                        // If the key typed is correct the text color becomes green
+                        typedTextArea.setForeground(new Color(0, 128, 0));
+                        currentPosition++;
+                            
+                    } else {
+                            
+                        playSound("error.wav");
+                        typedTextArea.setForeground(Color.RED);
+                        currentPosition++;
+                        numberOferrors++;
+ 
+                        // wrongKey holds the value of key typed incorrectly
+                        String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
+                            
+                        if ( wrongTypedKeys.containsKey(wrongKey) )
+                            wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
+                        else
+                            wrongTypedKeys.put(wrongKey, new Integer(1));
+                                      
+                    }
+                        
+                }
+                  
+                numberOfpressedKeys++;
+                // Change the scroll position
+                origionalCodeTextArea.setCaretPosition(currentPosition);
+                    
+                if( currentPosition >= origionalCodeTextArea.getText().length() - 1 ){
+                    
+                    // changing the boolian timerStatus to true, which will stop the timer.
+                    stopTheTimer = true;
+                    
+                }
+                   
+            }
+
+            @Override
+
+            public void keyTyped (KeyEvent event) {
+                    
+                // printEventInfo("Key Typed", event);
+                    
+            }
+            
+            private void printEventInfo (String str, KeyEvent e) {
+
+                System.out.println(str);
+                System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
+                System.out.println("   Char: " + e.getKeyChar());
+                // mode has the value if shift is pressed
+                int mods = e.getModifiersEx();
+                System.out.println("    Mods: " + KeyEvent.getModifiersExText(mods));
+
+            };
