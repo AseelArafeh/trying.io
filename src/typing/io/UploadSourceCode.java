@@ -18,7 +18,6 @@ public class UploadSourceCode extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        uploadSourceCodeLabel = new javax.swing.JLabel();
         languageLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         langContent = new javax.swing.JTextArea();
@@ -26,12 +25,9 @@ public class UploadSourceCode extends javax.swing.JFrame {
         langName = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        uploadSouceCodeTitle = new javax.swing.JLabel();
 
         setTitle("Upload Source Code");
-
-        uploadSourceCodeLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 36)); // NOI18N
-        uploadSourceCodeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        uploadSourceCodeLabel.setText("Upload Source Code");
 
         languageLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         languageLabel.setText("Language:");
@@ -46,7 +42,8 @@ public class UploadSourceCode extends javax.swing.JFrame {
 
         langName.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
 
-        saveButton.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        saveButton.setFont(new java.awt.Font("Sakkal Majalla", 1, 24)); // NOI18N
+        saveButton.setForeground(new java.awt.Color(153, 0, 153));
         saveButton.setText("Save");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +51,8 @@ public class UploadSourceCode extends javax.swing.JFrame {
             }
         });
 
-        cancelButton.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        cancelButton.setFont(new java.awt.Font("Sakkal Majalla", 1, 24)); // NOI18N
+        cancelButton.setForeground(new java.awt.Color(153, 0, 153));
         cancelButton.setText("Cancel");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,48 +60,51 @@ public class UploadSourceCode extends javax.swing.JFrame {
             }
         });
 
+        uploadSouceCodeTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        uploadSouceCodeTitle.setForeground(new java.awt.Color(153, 0, 153));
+        uploadSouceCodeTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        uploadSouceCodeTitle.setText("Upload Source Code");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(languageLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(langName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(codeLabel))
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addComponent(uploadSouceCodeTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(saveButton)))
                 .addGap(39, 39, 39))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(uploadSourceCodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(89, 89, 89)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(langName, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(codeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(uploadSourceCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(uploadSouceCodeTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(languageLabel)
                     .addComponent(langName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addComponent(codeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
@@ -111,7 +112,7 @@ public class UploadSourceCode extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(474, 460));
+        setSize(new java.awt.Dimension(798, 621));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,6 +221,6 @@ public class UploadSourceCode extends javax.swing.JFrame {
     private javax.swing.JTextField langName;
     private javax.swing.JLabel languageLabel;
     private javax.swing.JButton saveButton;
-    private javax.swing.JLabel uploadSourceCodeLabel;
+    private javax.swing.JLabel uploadSouceCodeTitle;
     // End of variables declaration//GEN-END:variables
 }

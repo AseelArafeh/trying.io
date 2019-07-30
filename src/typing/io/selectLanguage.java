@@ -56,7 +56,6 @@ public class selectLanguage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        selectPracticeInformationLabel = new javax.swing.JLabel();
         langList = new javax.swing.JComboBox<>();
         languageLabel = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
@@ -64,25 +63,22 @@ public class selectLanguage extends javax.swing.JFrame {
         durationList = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         preview = new javax.swing.JTextArea();
+        selectPracticeInformationTitle = new javax.swing.JLabel();
 
         setTitle("Practice Information");
 
-        selectPracticeInformationLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        selectPracticeInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        selectPracticeInformationLabel.setText("Select your practice information");
-
-        langList.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        langList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        langList.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         langList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 langListActionPerformed(evt);
             }
         });
 
-        languageLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        languageLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         languageLabel.setText("Language");
 
-        startButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        startButton.setFont(new java.awt.Font("Sakkal Majalla", 1, 24)); // NOI18N
+        startButton.setForeground(new java.awt.Color(153, 0, 153));
         startButton.setText("Start");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,10 +86,10 @@ public class selectLanguage extends javax.swing.JFrame {
             }
         });
 
-        timeLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        timeLabel.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         timeLabel.setText("Duration -in minutes-");
 
-        durationList.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        durationList.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
         durationList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         durationList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,64 +97,62 @@ public class selectLanguage extends javax.swing.JFrame {
             }
         });
 
+        preview.setEditable(false);
         preview.setColumns(20);
-        preview.setFont(new java.awt.Font("Monospaced", 0, 10)); // NOI18N
+        preview.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         preview.setLineWrap(true);
         preview.setRows(5);
         preview.setTabSize(2);
         jScrollPane1.setViewportView(preview);
 
+        selectPracticeInformationTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        selectPracticeInformationTitle.setForeground(new java.awt.Color(153, 0, 153));
+        selectPracticeInformationTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        selectPracticeInformationTitle.setText("Select Your Practice Information");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(startButton)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(selectPracticeInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(durationList, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(144, 144, 144)
-                            .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addGap(146, 146, 146)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(languageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(langList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(durationList, 0, 238, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(88, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectPracticeInformationTitle)
+                    .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(selectPracticeInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(38, 38, 38)
+                .addComponent(selectPracticeInformationTitle)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(durationList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                .addGap(22, 22, 22)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(startButton)
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(595, 531));
+        setSize(new java.awt.Dimension(801, 617));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,7 +213,7 @@ public class selectLanguage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> langList;
     private javax.swing.JLabel languageLabel;
     private javax.swing.JTextArea preview;
-    private javax.swing.JLabel selectPracticeInformationLabel;
+    private javax.swing.JLabel selectPracticeInformationTitle;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables

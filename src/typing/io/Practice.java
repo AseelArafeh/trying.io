@@ -97,7 +97,8 @@ public class Practice extends javax.swing.JFrame {
         timeRemainingTextField.setEditable(false);
         timeRemainingTextField.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
 
-        endButton.setFont(new java.awt.Font("Sakkal Majalla", 0, 24)); // NOI18N
+        endButton.setFont(new java.awt.Font("Sakkal Majalla", 1, 24)); // NOI18N
+        endButton.setForeground(new java.awt.Color(153, 0, 153));
         endButton.setText("End");
         endButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,15 +127,15 @@ public class Practice extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(endButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3)))
+                            .addComponent(jScrollPane3)
+                            .addComponent(endButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
                         .addComponent(languageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
+                        .addComponent(languageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(timeRemainingLabel)
                         .addGap(18, 18, 18)
                         .addComponent(timeRemainingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
