@@ -33,18 +33,18 @@ public class Results extends javax.swing.JFrame {
         String ErrorList = "";
         
         for (Map.Entry< String, Integer> me:wrongTypedKeysSet) { 
-            if ( me.getKey().equals(" ")  ){
-                String currentError = String.format("       %s\t%c %-5d %s\n", "Space", ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
-                ErrorList += (currentError);
-                continue;
-            } else if ( me.getKey().equals("\n")) {
-                String currentError = String.format("       %s\t%c %-5d %s\n", "Enter", ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
-                ErrorList += (currentError);
-                continue;
-            }
+            
+            String key;
+            if ( me.getKey().equals(" ")  )
+                key = "Space";
+            else if ( me.getKey().equals("\n")) 
+                key = "Enter";
+            else 
+                key = me.getKey();
+            
             
             Set< Map.Entry< String,Integer> > st = wrongTypedKeys.entrySet();
-            String currentError = String.format("       %s\t%c %-5d %s\n", me.getKey(), ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
+            String currentError = String.format("%7s\t%c %-5d %s\n", key, ':', me.getValue(), me.getValue() == 1 ? "Time" : "Times");
             ErrorList += (currentError);
         } 
         
@@ -135,9 +135,9 @@ public class Results extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(practiceResultTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(noOfWords, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(noOfWords, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(typingSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typedChars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

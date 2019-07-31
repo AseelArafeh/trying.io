@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.ComboBox;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 
 
 public class selectLanguage extends javax.swing.JFrame {
@@ -48,7 +46,7 @@ public class selectLanguage extends javax.swing.JFrame {
         ComboBoxModel model;
         model = new DefaultComboBoxModel(str);
         langList.setModel(model);
-        loadingFile();
+        loadFilePreview();
         
     }
 
@@ -161,7 +159,8 @@ public class selectLanguage extends javax.swing.JFrame {
         Practice practiceObject;
         try {
                 
-            practiceObject = new Practice((String) langList.getSelectedItem() ,Integer.parseInt((String) durationList.getSelectedItem()) );
+            practiceObject = new Practice((String) langList.getSelectedItem(),
+                Integer.parseInt((String) durationList.getSelectedItem()) );
             practiceObject.setVisible(true);
             this.setVisible(false); 
                 
@@ -178,7 +177,7 @@ public class selectLanguage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_durationListActionPerformed
 
-    void loadingFile(){
+    void loadFilePreview(){
         try {
             // TODO add your handling code here:
             File f = new File("practiceLanguages" + "//" + (String) langList.getSelectedItem() + ".txt");
@@ -188,13 +187,14 @@ public class selectLanguage extends javax.swing.JFrame {
                 preview.setText(input.next());
             }
             preview.setCaretPosition(0);
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(selectLanguage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     private void langListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langListActionPerformed
-        loadingFile();
+        loadFilePreview();
     }//GEN-LAST:event_langListActionPerformed
 
     public static void main(String args[]) {

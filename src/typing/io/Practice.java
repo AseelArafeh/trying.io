@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.NavigableMap;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -173,7 +172,8 @@ public class Practice extends javax.swing.JFrame {
 
     void showResults() {
         
-        Results resultsObject = new Results(numberOfCorrectKeystroke, numberOferrors,(selectedDurationInMinutes*60)-timeRemainingInSeconds-1, wrongTypedKeys);
+        Results resultsObject = new Results(numberOfCorrectKeystroke, numberOferrors,
+            (selectedDurationInMinutes * 60) - timeRemainingInSeconds - 1, wrongTypedKeys);
         resultsObject.setVisible(true);
         this.setVisible(false);
         
@@ -184,7 +184,7 @@ public class Practice extends javax.swing.JFrame {
         try {
             
             String line = null;
-            FileReader content = new FileReader("practiceLanguages" + "//" + selectedLanguage + ".txt");
+            FileReader content = new FileReader("practiceLanguages//" + selectedLanguage + ".txt");
             BufferedReader bufferedReader = new BufferedReader(content); 
             // BufferedReader can only read data line by line.. That's why I needed allOfIt string to save all lines together
             String allOfIt = "";
@@ -199,6 +199,7 @@ public class Practice extends javax.swing.JFrame {
 
             bufferedReader.close();
             origionalCodeTextArea.setText(allOfIt);
+            
             // Set textArea scroll at the beginning, by moving the caret to position ZERO
             origionalCodeTextArea.setCaretPosition(0);
                     
@@ -222,7 +223,7 @@ public class Practice extends javax.swing.JFrame {
                 
                 // Update remaining timer lable every second
                 timeRemainingTextField.setText(Integer.toString(timeRemainingInSeconds));
-                timeRemainingInSeconds --;
+                timeRemainingInSeconds--;
                 if (timeRemainingInSeconds == -1 || stopTheTimer) {
                     
                     timer.cancel();
@@ -250,18 +251,15 @@ public class Practice extends javax.swing.JFrame {
     }//GEN-LAST:event_endButtonActionPerformed
 
     void cutUselessSpaces() {
-        
+        // This method is called at the end of a line ignore the unnecessary white speces and to set the text area's carret
+        //  to the right position so the text has the same layout as the original code
         currentPosition++;
         char currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
 
         while (currentCh == ' ' || currentCh == '\n') {
             
             currentPosition++;
-            if (currentCh == ' ')
-                typedTextArea.setText(typedTextArea.getText() + " ");
-            else
-                typedTextArea.setText(typedTextArea.getText() + "\n");
-
+            typedTextArea.setText(typedTextArea.getText() + currentCh);
             currentCh = origionalCodeTextArea.getText().charAt(currentPosition);
             
         }
@@ -270,6 +268,9 @@ public class Practice extends javax.swing.JFrame {
     
     private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
         
+        // This area works when we enter the textArea
+        
+        // Starting the timer
         if (firstFocus) {
             
             fillTimer(selectedDurationInMinutes);
@@ -277,26 +278,25 @@ public class Practice extends javax.swing.JFrame {
             
         }
         
+        
         // currentPosition holds the index of the letter to be typed
         KeyListener listener = new KeyListener() {
 
             @Override
             public void keyPressed(KeyEvent event) {
-
-                //printEventInfo("Key Pressed", event);
-                    
             }
 
             @Override
 
             public void keyReleased (KeyEvent event) {
                     
-                //printEventInfo("Key Released", event);
-                if (currentPosition >= typedTextArea.getText().length() )
+                
+                if (currentPosition >= origionalCodeTextArea.getText().length())    // Ignore if we finished typing
                     return;
+                
                 if (KeyEvent.getKeyText(event.getKeyCode()).equals("Backspace")) {
                         
-                    if (currentPosition - 1 >= 0)
+                    if (currentPosition - 1 >= 0) // Ignore if backspace is entered while the textArea is empty
                         currentPosition--;
                             
                 } else if (KeyEvent.getKeyText(event.getKeyCode()).equals("Shift")
@@ -308,11 +308,12 @@ public class Practice extends javax.swing.JFrame {
                         
                 } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)
                             &&  KeyEvent.getKeyText(event.getKeyCode()).equals("Enter")){
-                        
+                    
                     cutUselessSpaces();
                        
                 } else {
-                        
+                      
+                    // The code above is for handling special keys, below we handle the correctness of the typed character 
                     if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
                             
                         // If the key typed is correct the text color becomes green
@@ -321,7 +322,8 @@ public class Practice extends javax.swing.JFrame {
                         numberOfCorrectKeystroke++;
                             
                     } else {
-                            
+                        
+                        // if The key typed was incorrect.
                         playSound("error.wav");
                         typedTextArea.setForeground(Color.RED);
                         currentPosition++;
@@ -330,6 +332,7 @@ public class Practice extends javax.swing.JFrame {
                         // wrongKey holds the value of key typed incorrectly
                         String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
                             
+                        // Adding wrongly typed key to the detailed error list
                         if ( wrongTypedKeys.containsKey(wrongKey) )
                             wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
                         else
@@ -343,7 +346,6 @@ public class Practice extends javax.swing.JFrame {
                 origionalCodeTextArea.setCaretPosition(currentPosition);
                     
                 if( currentPosition >= origionalCodeTextArea.getText().length() - 1 ){
-                    
                     // changing the boolean stopTheTimer to true, which will stop the timer.
                     stopTheTimer = true;
                     
@@ -353,22 +355,9 @@ public class Practice extends javax.swing.JFrame {
 
             @Override
 
-            public void keyTyped (KeyEvent event) {
-                    
-                // printEventInfo("Key Typed", event);
-                    
+            public void keyTyped (KeyEvent event) { 
             }
             
-//            private void printEventInfo (String str, KeyEvent e) {
-//
-//                System.out.println(str);
-//                System.out.println("(" + e.getKeyChar() + "," + origionalCodeTextArea.getText().charAt(currentPosition));
-//                System.out.println("   Char: " + e.getKeyChar());
-//                // mode has the value if shift is pressed
-//                int mods = e.getModifiersEx();
-//                System.out.println("    Mods: " + KeyEvent.getModifiersExText(mods));
-//
-//            };
         };
 
         typedTextArea.addKeyListener(listener);

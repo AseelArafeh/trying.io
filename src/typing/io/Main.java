@@ -118,7 +118,7 @@ public class Main extends javax.swing.JFrame {
 
         if(exitConfirmation == JOptionPane.YES_OPTION) {
             System.exit(0);
-        }else{
+        } else {
             setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }  
             
