@@ -110,6 +110,7 @@ public class Practice extends javax.swing.JFrame {
         secondLabel.setText("sec");
 
         typedTextArea.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        typedTextArea.setForeground(new java.awt.Color(0, 128, 0));
         typedTextArea.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 typedTextAreaFocusGained(evt);
@@ -170,7 +171,7 @@ public class Practice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    void showResults() {
+    private void showResults() {
         
         Results resultsObject = new Results(numberOfCorrectKeystroke, numberOferrors,
             (selectedDurationInMinutes * 60) - timeRemainingInSeconds - 1, wrongTypedKeys);
@@ -179,7 +180,7 @@ public class Practice extends javax.swing.JFrame {
         
     }
     
-    void fillOriginalCode(String selectedLanguage) throws IOException {
+    private void fillOriginalCode(String selectedLanguage) throws IOException {
         
         try {
             
@@ -211,7 +212,7 @@ public class Practice extends javax.swing.JFrame {
         
     }
     
-    void fillTimer(int selectedDuration){
+    private void fillTimer(int selectedDuration){
         
         // Initiate a new timer
         Timer timer = new Timer();   
@@ -250,7 +251,7 @@ public class Practice extends javax.swing.JFrame {
      
     }//GEN-LAST:event_endButtonActionPerformed
 
-    void cutUselessSpaces() {
+    private void cutUselessSpaces() {
         // This method is called at the end of a line ignore the unnecessary white speces and to set the text area's carret
         //  to the right position so the text has the same layout as the original code
         currentPosition++;
@@ -266,6 +267,88 @@ public class Practice extends javax.swing.JFrame {
     
     }
     
+    
+    private KeyListener listener = new KeyListener() {
+        
+        // currentPosition holds the index of the letter to be typed
+        @Override
+        public void keyPressed(KeyEvent event) {
+
+            // Change the scroll position
+            origionalCodeTextArea.setCaretPosition(currentPosition);
+
+            if (currentPosition >= origionalCodeTextArea.getText().length() - 1) {   
+                // changing the boolean stopTheTimer to true, which will stop the timer.
+                stopTheTimer = true;
+                typedTextArea.setEditable(false);
+                return;
+            }
+            if (KeyEvent.getKeyText(event.getKeyCode()).equals("Backspace")) {
+
+                if (currentPosition - 1 >= 0) // Ignore if backspace is entered while the textArea is empty
+                    currentPosition--;
+
+            } else if (KeyEvent.getKeyText(event.getKeyCode()).equals("Shift")
+                || KeyEvent.getKeyText(event.getKeyCode()).equals("Caps Lock")
+                || KeyEvent.getKeyText(event.getKeyCode()).equals("Alt")
+                || KeyEvent.getKeyText(event.getKeyCode()).equals("Ctrl")
+                || KeyEvent.getKeyText(event.getKeyCode()).equals("Enter")) {
+
+                // The program should ignore these keys.
+
+            } else {
+
+
+                // The code above is for handling special keys, below we handle the correctness of the typed character 
+                if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
+
+                    typedTextArea.setForeground(new Color(0, 128, 0));
+                    currentPosition++;
+                    numberOfCorrectKeystroke++;
+
+                } else {
+
+                    // if The key typed was incorrect.
+                    playSound("error.wav");
+                    typedTextArea.setForeground(Color.RED);
+                    currentPosition++;
+                    numberOferrors++;
+
+                    // wrongKey holds the value of key typed incorrectly
+                    String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
+
+                    // Adding wrongly typed key to the detailed error list
+                    if ( wrongTypedKeys.containsKey(wrongKey) )
+                        wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
+                    else
+                        wrongTypedKeys.put(wrongKey, new Integer(1));
+
+                }
+
+            }
+
+        }
+
+        @Override
+
+        public void keyReleased (KeyEvent event) {
+
+            if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)
+                &&  KeyEvent.getKeyText(event.getKeyCode()).equals("Enter")){
+
+                cutUselessSpaces();
+
+            }
+        }
+
+        @Override
+
+        public void keyTyped (KeyEvent event) { 
+        }
+
+    };
+    
+    
     private void typedTextAreaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_typedTextAreaFocusGained
         
         // This area works when we enter the textArea
@@ -274,93 +357,10 @@ public class Practice extends javax.swing.JFrame {
         if (firstFocus) {
             
             fillTimer(selectedDurationInMinutes);
+            typedTextArea.addKeyListener(listener);
             firstFocus = false;
             
         }
-        
-        
-        // currentPosition holds the index of the letter to be typed
-        KeyListener listener = new KeyListener() {
-
-            @Override
-            public void keyPressed(KeyEvent event) {
-            }
-
-            @Override
-
-            public void keyReleased (KeyEvent event) {
-                    
-                
-                if (currentPosition >= origionalCodeTextArea.getText().length())    // Ignore if we finished typing
-                    return;
-                
-                if (KeyEvent.getKeyText(event.getKeyCode()).equals("Backspace")) {
-                        
-                    if (currentPosition - 1 >= 0) // Ignore if backspace is entered while the textArea is empty
-                        currentPosition--;
-                            
-                } else if (KeyEvent.getKeyText(event.getKeyCode()).equals("Shift")
-                    || KeyEvent.getKeyText(event.getKeyCode()).equals("Caps Lock")
-                    || KeyEvent.getKeyText(event.getKeyCode()).equals("Alt")  
-                    || KeyEvent.getKeyText(event.getKeyCode()).equals("Ctrl")) {
-                        
-                    // The program should ignore these keys.
-                        
-                } else if ( event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)
-                            &&  KeyEvent.getKeyText(event.getKeyCode()).equals("Enter")){
-                    
-                    cutUselessSpaces();
-                       
-                } else {
-                      
-                    // The code above is for handling special keys, below we handle the correctness of the typed character 
-                    if (event.getKeyChar() == origionalCodeTextArea.getText().charAt(currentPosition)) {
-                            
-                        // If the key typed is correct the text color becomes green
-                        typedTextArea.setForeground(new Color(0, 128, 0));
-                        currentPosition++;
-                        numberOfCorrectKeystroke++;
-                            
-                    } else {
-                        
-                        // if The key typed was incorrect.
-                        playSound("error.wav");
-                        typedTextArea.setForeground(Color.RED);
-                        currentPosition++;
-                        numberOferrors++;
- 
-                        // wrongKey holds the value of key typed incorrectly
-                        String wrongKey = Character.toString(origionalCodeTextArea.getText().charAt(currentPosition - 1));
-                            
-                        // Adding wrongly typed key to the detailed error list
-                        if ( wrongTypedKeys.containsKey(wrongKey) )
-                            wrongTypedKeys.put(wrongKey, new Integer(wrongTypedKeys.get(wrongKey) + 1));
-                        else
-                            wrongTypedKeys.put(wrongKey, new Integer(1));
-                                      
-                    }
-                        
-                }
-                  
-                // Change the scroll position
-                origionalCodeTextArea.setCaretPosition(currentPosition);
-                    
-                if( currentPosition >= origionalCodeTextArea.getText().length() - 1 ){
-                    // changing the boolean stopTheTimer to true, which will stop the timer.
-                    stopTheTimer = true;
-                    
-                }
-                   
-            }
-
-            @Override
-
-            public void keyTyped (KeyEvent event) { 
-            }
-            
-        };
-
-        typedTextArea.addKeyListener(listener);
 
     }//GEN-LAST:event_typedTextAreaFocusGained
 
@@ -368,7 +368,7 @@ public class Practice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_languageTextFieldActionPerformed
 
-    public void playSound(String soundFileName) {
+    private void playSound(String soundFileName) {
             
         try {
                 
